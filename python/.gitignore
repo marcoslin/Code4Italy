@@ -1,0 +1,11 @@
+# Ignore directory
+pyenv/
+data/
+
+# Ignore generated files
+*.pyc
+
+# Ignore test and other temp files
+test.py
+*.tmp
+
