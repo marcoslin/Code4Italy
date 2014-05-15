@@ -14,16 +14,17 @@ result = g.parse(source_rdf)
 print "### graph has %s statements." % len(g)
 
 for person in g.subjects(RDF.type, FOAF.Person):
-    for title in g.objects(person, DC.title):
-        for gender in g.objects(person, FOAF.gender):
-            print "# %s: %s" % (title, gender)
-            print "- Camera"
-            for camera in g.objects(person, OCD.rif_mandatoCamera):
-                print "  %s" % camera
-                
-            print "- Senato"
-            for senato in g.objects(person, OCD.rif_mandatoSenato):
-                print "  %s" % senato 
+    title = g.value(person, DC.title)
+    gender = g.value(person, FOAF.gender)
+    
+    print "# %s: %s" % (title, gender)
+    print "- Camera"
+    for camera in g.objects(person, OCD.rif_mandatoCamera):
+        print "  %s" % camera
+        
+    print "- Senato"
+    for senato in g.objects(person, OCD.rif_mandatoSenato):
+        print "  %s" % senato 
 
 sys.exit()
 
