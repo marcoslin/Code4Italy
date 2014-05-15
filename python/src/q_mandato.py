@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import sys
 from rdflib import Graph, Literal, BNode, Namespace, RDF, URIRef
 from rdflib.namespace import DC, FOAF
 
@@ -26,13 +25,4 @@ for person in g.subjects(RDF.type, FOAF.Person):
     for senato in g.objects(person, OCD.rif_mandatoSenato):
         print "  %s" % senato 
 
-sys.exit()
-
-
-lcounter = 0
-for subj, pred, obj in g:
-    lcounter = lcounter + 1
-    print "=> %s\n   %s\n   %s\n" % (subj, pred, obj)
-    if lcounter > 10:
-        break
 
