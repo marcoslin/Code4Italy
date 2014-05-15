@@ -13,6 +13,10 @@ PYENV         = pyenv
 PIP           = $(PYENV)/bin/pip
 PYLIB_REQ     = pylib_req.txt
 
+# ------------------
+# Define environment needed by bsddb3
+BERKELEYDB_INCDIR=/opt/local/include/db53/
+BERKELEYDB_LIBDIR=/opt/local/lib/db53/
 
 # ------------------
 # USAGE: First target called if no target specified
