@@ -1,6 +1,7 @@
 # Ignore directory
 pyenv/
 data/
+src/store.db/
 
 # Ignore generated files
 *.pyc

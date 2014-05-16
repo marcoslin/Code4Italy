@@ -1,0 +1,29 @@
+{
+    "name": "code4italy",
+    "version": "0.0.1",
+    "homepage": "https://github.com/marcoslin/code4italy",
+    "authors": [
+        "Marcos Lin <marcos.lin@farport.co.uk>"
+    ],
+    "description": "Code4Italy @ Montecitorio",
+    "main": "index.html",
+    "keywords": [
+        "SPARQL"
+    ],
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "d3js": "*",
+        "d3-grid": "0.1.1",
+        "angular": "1.2.16",
+        "angular-route": "1.2.16",
+        "angular-sanitize": "1.2.16"
+    }
+}
