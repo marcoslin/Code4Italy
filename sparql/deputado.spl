@@ -1,8 +1,3 @@
-select distinct ?deputato ?collegio where {
-    ?deputato a ocd:deputato; ocd:rif_leg <http://dati.camera.it/ocd/legislatura.rdf/repubblica_17>; ocd:rif_mandatoCamera ?mandato .
-    ?mandato ocd:rif_elezione ?elezione .
-    ?elezione dc:coverage ?collegio .
-    FILTER NOT EXISTS{
-        ?mandato ocd:endDate ?date
-    }
-}
+select distinct ?deputato where { ?deputato a ocd:deputato; ocd:rif_leg <http://dati.camera.it/ocd/legislatura.rdf/repubblica_17>; ocd:rif_mandatoCamera ?mandato . ?mandato ocd:rif_elezione ?elezione .
+?elezione dc:coverage 'VENETO 1'
+FILTER NOT EXISTS{ ?mandato ocd:endDate ?date } }
