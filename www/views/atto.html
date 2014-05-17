@@ -1,0 +1,16 @@
+<h1>Level 3</h1>
+
+<h2>Atto - {{atto_count}}</h2>
+<ul ng-repeat="row in atto_result">
+    <li><a ng-href="{{row.atto.value}}">{{row.atto.value}}</a></li>
+</ul>
+
+<h2>Atti di indirizzo e controllo - {{aic_count}}</h2>
+<ul ng-repeat="row in aic_result">
+    <li><a ng-href="{{row.aic.value}}">{{row.aic.value}}</a></li>
+</ul>
+
+<h2>Interventi - {{intervento_count}}</h2>
+<ul ng-repeat="row in intervento_result">
+    <li><a ng-href="{{row.intervento.value}}">{{row.intervento.value}}</a></li>
+</ul>

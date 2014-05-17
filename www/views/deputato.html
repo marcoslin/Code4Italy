@@ -3,6 +3,5 @@
 <div>{{row_count}}</div>
 
 <ul ng-repeat="row in result">
-    <li><a ng-href="{{row.deputato.value}}">{{row.deputato.value}}</a></li>
-
+    <li><a ng-href="#atto?deputato={{row.deputato.value}}">{{row.deputato.value}}</a></li>
 </ul>

@@ -6,6 +6,8 @@
         $routeProvider
             .when('/home', { templateUrl: "views/home.html", controller: "HomeController"} )
             .when('/deputato', { templateUrl: "views/deputato.html", controller: "DeputatoController"} )
+            .when('/atto', { templateUrl: "views/atto.html", controller: "AttoController"} )
+
 
             .when('/sparql', { templateUrl: "views/sparql.html", controller: "HomeController"} )
             .otherwise({redirectTo: '/home'})

@@ -1,0 +1,5 @@
+select distinct * where { OPTIONAL {?aic ocd:primo_firmatario
+<http://dati.camera.it/ocd/deputato.rdf/d306210_17>
+. ?aic a ocd:aic.} OPTIONAL {?aic ocd:altro_firmatario
+<http://dati.camera.it/ocd/deputato.rdf/d306210_17>
+. ?aic a ocd:aic.} }
