@@ -1,1 +1,12 @@
 <H1>Home Page</H1>
+
+<table>
+    <tr>
+        <td>Collegio</td>
+        <td>Count</td>
+    </tr>
+    <tr ng-repeat="row in result">
+        <td><a ng-href="#/deputato?collegio={{row.collegio.value}}">{{row.collegio.value}}</a></td>
+        <td>{{row["callret-0"].value}}</td>
+    </tr>
+</table>
