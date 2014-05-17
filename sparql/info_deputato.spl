@@ -1,11 +1,11 @@
-select distinct ?deputato ?nome ?cognome ?sesso ?sigla where {
+select distinct ?deputato ?nome ?cognome ?img ?categoryY ?categoryX where {
     ?deputato a ocd:deputato; 
     foaf:firstName ?nome; 
     foaf:surname ?cognome;
-    foaf:gender ?sesso;
+    foaf:gender ?categoryY ;
+    foaf:depiction ?img;
     ocd:rif_leg <http://dati.camera.it/ocd/legislatura.rdf/repubblica_17>; 
-	ocd:rif_mandatoCamera ?mandato . ?mandato ocd:rif_elezione ?elezione .
-    ?elezione dc:coverage 'VENETO 1'
+    ocd:rif_mandatoCamera ?mandato . ?mandato ocd:rif_elezione ?elezione . ?elezione dc:coverage 'VENETO 1'
     FILTER NOT EXISTS{ ?mandato ocd:endDate ?date } 
 
     ## deputato
@@ -13,6 +13,6 @@ select distinct ?deputato ?nome ?cognome ?sesso ?sigla where {
 
     ## adesione a gruppo
     ?aderisce ocd:rif_gruppoParlamentare ?gruppo.
-    ?gruppo <http://purl.org/dc/terms/alternative> ?sigla.
+    ?gruppo <http://purl.org/dc/terms/alternative> ?categoryX .
     MINUS{?aderisce ocd:endDate ?fineAdesione}
 }
