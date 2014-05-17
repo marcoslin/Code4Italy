@@ -3,5 +3,7 @@
 <div>{{row_count}}</div>
 
 <ul ng-repeat="row in result">
-    <li><a ng-href="#atto?deputato={{row.deputato.value}}">{{row.deputato.value}}</a></li>
+    <li>
+        <img ng-src="{{row.img.value}}">
+        <a ng-href="#atto?deputato={{row.deputato.value}}">{{row.deputato.value}}</a> {{row.categoryY.value}} </li>
 </ul>
