@@ -19,8 +19,8 @@
     app.controller("DeputatoController", ["$scope", "$routeParams", "SPARQL", "$log", function ($scope, $routeParams, SPARQL, $log) {
         //DeputatoController
         var collegio = $routeParams.collegio,
-            sql_pre = "select distinct ?deputato where { ?deputato a ocd:deputato; ocd:rif_leg <http://dati.camera.it/ocd/legislatura.rdf/repubblica_17>; ocd:rif_mandatoCamera ?mandato . ?mandato ocd:rif_elezione ?elezione . ?elezione dc:coverage '",
-            sql_pos = "' . FILTER NOT EXISTS{ ?mandato ocd:endDate ?date } }",
+            sql_pre = "select distinct ?deputato where { ?deputato a ocd:deputato; ocd:rif_leg <http://dati.camera.it/ocd/legislatura.rdf/repubblica_17>; ocd:rif_mandatoCamera ?mandato . ?mandato ocd:rif_elezione ?elezione . ?elezione dc:coverage \"",
+            sql_pos = "\" . FILTER NOT EXISTS{ ?mandato ocd:endDate ?date } }",
             sql_deputato = sql_pre + collegio + sql_pos
         ;
 
