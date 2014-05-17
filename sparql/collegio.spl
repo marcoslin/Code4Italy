@@ -1,4 +1,4 @@
-select count(distinct ?deputato) ?collegio 
+select count(distinct ?deputato) as ?count ?collegio 
 where {
     ?deputato a ocd:deputato; ocd:rif_leg <http://dati.camera.it/ocd/legislatura.rdf/repubblica_17>; ocd:rif_mandatoCamera ?mandato .
     ?mandato ocd:rif_elezione ?elezione .

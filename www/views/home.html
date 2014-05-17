@@ -5,8 +5,8 @@
         <td>Collegio</td>
         <td>Count</td>
     </tr>
-    <tr ng-repeat="row in result">
-        <td><a ng-href="#/deputato?collegio={{row.collegio.value}}">{{row.collegio.value}}</a></td>
-        <td>{{row["callret-0"].value}}</td>
+    <tr ng-repeat="(key, count) in result">
+        <td><a ng-href="#/deputato?collegio={{key}}">{{key}}</a></td>
+        <td>{{count}}</td>
     </tr>
 </table>
