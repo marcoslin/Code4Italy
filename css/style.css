@@ -9,12 +9,29 @@ img.face-clip {
     border-radius: 100px;
 }
 
+.profilo_deputato {
+    float: left;
+    width: 33.3%;
+}
+
+.scrollable{
+    width: 100% !important;  width /**/:200px;
+    height:190px !important; height /**/: 200px;
+    padding: 4px;
+    border:0px solid #EEE; 
+    border-right:0 solid;
+    overflow:auto
+}
+
+.column1{
+    width: 33.3%;
+    float: left;
+}
 
 
 /*
  * Axis
  */
-
 .axis text {
     font: 10px sans-serif;
 }
