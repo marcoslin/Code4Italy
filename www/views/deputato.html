@@ -6,7 +6,9 @@
     <tr ng-repeat="(itemY, count) in yValues">
         <td ng-repeat="(itemX, count) in xValues">
             <span class="face-container" ng-repeat="row in result2[itemX][itemY]">
-                <img class="face-clip" ng-src="{{row.img}}">
+                <a ng-href="#atto?deputato={{row.refid}}">
+                    <img class="face-clip" ng-src="{{row.img}}">
+                </a>
             </span>
         </td>
     </tr>
