@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/labelTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Collegio: "
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/vehicleType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="vehicleType"
+            android:textSize="23dp"
+            android:layout_marginRight="10dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/labelNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numero deputati: "
+            android:textSize="18dp"
+             />
+
+        <TextView
+            android:id="@+id/vehicleColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="vehicleColor" />
+    </LinearLayout>
+
+</LinearLayout>
+
