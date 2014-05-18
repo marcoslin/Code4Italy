@@ -1,0 +1,37 @@
+SELECT distinct ?deputato ?nome ?cognome ?dataNascita ?luogoNascita ?commissione ?img ?categoryY ?categoryX ?twitter ?facebook ?youtube
+WHERE {
+    ?deputato a ocd:deputato; 
+    foaf:firstName ?nome; 
+    foaf:surname ?cognome;
+    foaf:gender ?categoryY ;
+    foaf:depiction ?img;
+    ocd:rif_leg <http://dati.camera.it/ocd/legislatura.rdf/repubblica_17>; 
+    ocd:rif_mandatoCamera ?mandato . ?mandato ocd:rif_elezione ?elezione . ?elezione dc:coverage 'VENETO 1'
+    FILTER NOT EXISTS{ ?mandato ocd:endDate ?date } 
+
+    ## deputato
+    ?deputato ocd:aderisce ?aderisce.
+
+    ##anagrafica
+    OPTIONAL{ 
+      ?persona <http://purl.org/vocab/bio/0.1/Birth> ?nascita.
+      ?nascita <http://purl.org/vocab/bio/0.1/date> ?dataNascita; 
+      ocd:rif_luogo ?luogoNascitaUri.      
+      ?luogoNascitaUri dc:title ?luogoNascita. 
+    }
+
+    ## adesione a gruppo
+    ?aderisce ocd:rif_gruppoParlamentare ?gruppo.
+    ?gruppo <http://purl.org/dc/terms/alternative> ?categoryX .
+    MINUS{?aderisce ocd:endDate ?fineAdesione}
+
+    ## organo
+    ?d ocd:membro ?membro.?membro ocd:rif_organo ?organo. 
+    ?organo dc:title ?commissione .
+    MINUS{?membro ocd:endDate ?fineMembership}
+
+    ##accounts
+        OPTIONAL{?persona foaf:account ?accountTw. ?accountTw foaf:accountServiceHomepage ?twitter. FILTER(REGEX(STR(?twitter),'twitter.com'))}
+        OPTIONAL{?persona foaf:account ?accountFb. ?accountFb foaf:accountServiceHomepage ?facebook. FILTER(REGEX(STR(?facebook),'facebook.com'))} 
+        OPTIONAL{?persona foaf:account ?accountYt . ?accountYt foaf:accountServiceHomepage ?youtube. FILTER(REGEX(STR(?youtube),'youtube.com'))}
+}

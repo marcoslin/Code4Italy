@@ -1,0 +1,19 @@
+select distinct * where {
+?atto a ocd:atto.
+
+{
+  ?atto ocd:primo_firmatario ?deputato
+}
+UNION
+{
+  ?atto ocd:altro_firmatario ?deputato
+}
+
+?deputato a ocd:deputato.
+
+?atto dc:title ?nomeAtto.
+?atto dc:description ?descrizioneAtto.
+
+?legge a ocd:legge; ocd:rif_leg <http://dati.camera.it/ocd/legislatura.rdf/repubblica_17>.
+?legge ocd:lavoriPreparatori [?lavoro ?atto]
+}

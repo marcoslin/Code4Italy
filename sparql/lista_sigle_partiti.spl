@@ -1,0 +1,6 @@
+select distinct(?sigla) 
+where {
+  ocd:deputato a ?deputato .
+  ?aderisce ocd:rif_gruppoParlamentare ?gruppo. 
+  ?gruppo <http://purl.org/dc/terms/alternative> ?sigla
+}

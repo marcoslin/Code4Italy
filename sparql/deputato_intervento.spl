@@ -1,3 +1,8 @@
-select distinct * where { OPTIONAL {?intervento ocd:rif_deputato
-<http://dati.camera.it/ocd/deputato.rdf/d306210_17>
- . ?intervento a ocd:intervento} }
+select distinct * where { 
+
+OPTIONAL {?intervento ocd:rif_deputato
+?deputato
+ . ?intervento a ocd:intervento} 
+ 
+ ?intervento  dc:title ?interventoRif.
+ }

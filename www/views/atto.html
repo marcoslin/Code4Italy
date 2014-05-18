@@ -1,16 +1,58 @@
 <h1>Level 3</h1>
 
-<h2>Atto - {{atto_count}}</h2>
-<ul ng-repeat="row in atto_result">
-    <li><a ng-href="{{row.atto.value}}">{{row.atto.value}}</a></li>
-</ul>
+<h2>Profilo deputato</h2>
+<div class="profilo_deputato" >
+    <img src="{{deputato_full.img.value}}" alt="{{deputato_full.cognome.value}} {{deputato_full.nome.value}}"> <br />
+    Nome: {{deputato_full.nome.value}} <br />
+    Cognome: {{deputato_full.cognome.value}} <br />
+    Data di nascita: {{deputato_full.dataNascita.value}} <br />
+    Luogo di nascita: {{deputato_full.luogoNascita .value}} <br />
+    <div style="white-space: pre-line ;">Commissione: {{deputato_full.commissione.value}} </div>
+    Sesso: {{deputato_full.categoryY.value}} <br />
+    Partito: {{deputato_full.categoryX.value}} <br />
+    <div ng-show="deputato_full.twitter.value">
+        Twitter : <a href="{{deputato_full.twitter.value}}">LINK</a>
+    </div>
+    <div ng-show="deputato_full.facebook.value">
+        Facebook: <a href="{{deputato_full.facebook.value}}">LINK</a>
+    </div>
+    <div ng-show="deputato_full.youtube.value">
+        YouTube: <a href="{{deputato_full.youtube.value}}">LINK</a>
+    </div>
+</div>
 
-<h2>Atti di indirizzo e controllo - {{aic_count}}</h2>
-<ul ng-repeat="row in aic_result">
-    <li><a ng-href="{{row.aic.value}}">{{row.aic.value}}</a></li>
-</ul>
+<div class="column1">
+    <h2>Atto - {{atto_count}}</h2>
+    <div class="scrollable">
+        <ul ng-repeat="row in atto_result">
+            <li><a ng-href="{{row.atto.value}}">{{row.nomeAtto.value}}</a></li>
+        </ul>
+    </div>
+</div>
 
-<h2>Interventi - {{intervento_count}}</h2>
-<ul ng-repeat="row in intervento_result">
-    <li><a ng-href="{{row.intervento.value}}">{{row.intervento.value}}</a></li>
-</ul>
+<div class="column1">
+    <h2>Atti di indirizzo e controllo - {{aic_count}}</h2>
+    <div class="scrollable">
+        <ul ng-repeat="row in aic_result">
+            <li><a ng-href="{{row.aic.value}}">{{row.title.value}}</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="column1">
+    <h2>Interventi - {{intervento_count}}</h2>
+    <div class="scrollable">
+        <ul ng-repeat="row in intervento_result">
+            <li><a ng-href="{{row.intervento.value}}">{{row.interventoRif.value}}</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="column1">
+    <h2>Leggi - {{leggi_result.length}}</h2>
+    <div class="scrollable">
+        <ul ng-repeat="row in leggi_result">
+            <li><a ng-href="{{row.legge.value}}">{{row.nomeAtto.value}}</a></li>
+        </ul>
+    </div>
+</div>

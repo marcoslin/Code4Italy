@@ -1,0 +1,65 @@
+.face-container {
+    width: 100px;
+    height: 100px;
+}
+
+img.face-clip {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
+
+.profilo_deputato {
+    float: left;
+    width: 33.3%;
+}
+
+.scrollable{
+    width: 100% !important;  width /**/:200px;
+    height:190px !important; height /**/: 200px;
+    padding: 4px;
+    border:0px solid #EEE; 
+    border-right:0 solid;
+    overflow:auto
+}
+
+.column1{
+    width: 33.3%;
+    float: left;
+}
+
+.profilo_deputato div{
+    width: 100%;
+}
+
+
+/*
+ * Deputato Page
+ */
+.face-table
+.face-table, th, td
+{
+    border: 2px  #babec3;
+    border-top-style:dotted ;
+    border-right-style:dotted ;
+    border-bottom-style:dotted ;
+    border-left-style: dotted solid;
+    border-style:dotted ;
+    padding: 5px  #babec3;
+    column-rule-style:dotted;
+    text-align: center;
+}
+
+/*
+ * Axis
+ */
+.axis text {
+    font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}

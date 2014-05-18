@@ -1,0 +1,12 @@
+select distinct * where { 
+
+OPTIONAL {?aic ocd:primo_firmatario
+?deputato
+. ?aic a ocd:aic.} OPTIONAL {?aic ocd:altro_firmatario
+?deputato
+. ?aic a ocd:aic.} 
+
+ ?aic dc:title ?titolo.
+ ?aic dc:description ?descrizione
+
+}

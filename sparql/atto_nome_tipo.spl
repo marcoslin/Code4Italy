@@ -1,0 +1,6 @@
+SELECT distinct * 
+WHERE {
+  ?atto a ocd:atto.
+  ?atto dc:type ?tipo.
+  ?atto dc:title ?nomeAtto.  
+}

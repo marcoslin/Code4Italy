@@ -1,0 +1,14 @@
+SELECT DISTINCT *
+WHERE {
+  ?votazione ocd:rif_leg ocdleg:repubblica_17; 
+  a ocd:votazione. ?votazione ocd:votazioneFinale 1;
+  ocd:votazioneFinale ?diventataLegge;
+  dc:title ?title; 
+  dc:date ?date; 
+  dc:description ?description;
+  dc:type ?type;  
+  ocd:votazioneSegreta ?segreta;
+  ocd:approvato ?approvatoDallaCamera;  
+  ocd:rif_attoCamera ?attoCamera.
+  FILTER (?attoCamera = <http://dati.camera.it/ocd/attocamera.rdf/ac17_676>)
+} 

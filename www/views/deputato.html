@@ -2,8 +2,21 @@
 
 <div>{{row_count}}</div>
 
-<ul ng-repeat="row in result">
-    <li>
-        <img ng-src="{{row.img.value}}">
-        <a ng-href="#atto?deputato={{row.deputato.value}}">{{row.deputato.value}}</a> {{row.categoryY.value}} </li>
-</ul>
+<table class="face-table" cellpadding="1" width="100%">
+    <tr ng-repeat="(itemY, count) in yValues">
+        <td ng-repeat="(itemX, count) in xValues">
+            <span class="face-container" ng-repeat="row in result2[itemX][itemY]">
+                <a ng-href="#atto?deputato={{row.refid}}">
+                    <img class="face-clip" ng-src="{{row.img}}">
+                </a>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td ng-repeat="(itemX, count) in xValues">
+            {{itemX}}
+        </td>
+    </tr>
+</table>
+
+
