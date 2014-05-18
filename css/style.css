@@ -28,6 +28,27 @@ img.face-clip {
     float: left;
 }
 
+.profilo_deputato div{
+    width: 100%;
+}
+
+
+/*
+ * Deputato Page
+ */
+.face-table
+.face-table, th, td
+{
+    border: 2px  #babec3;
+    border-top-style:dotted ;
+    border-right-style:dotted ;
+    border-bottom-style:dotted ;
+    border-left-style: dotted solid;
+    border-style:dotted ;
+    padding: 5px  #babec3;
+    column-rule-style:dotted;
+    text-align: center;
+}
 
 /*
  * Axis
@@ -41,4 +62,49 @@ img.face-clip {
     fill: none;
     stroke: #000;
     shape-rendering: crispEdges;
+}
+
+
+/*ksjdbfnjhsdbfjahdsbghjkadfb*/
+
+html, body 
+{
+	margin:0px;
+	padding: 0px;
+	color: #2c3E50;
+	background: transparent;
+	/*
+	#3A5398 blue più scuro
+	# 89C4F4 celeste 
+	*/ 
+} 
+
+#header a{
+	background-image: url(../img/header_s.png); 
+	background-repeat: no-repeat;
+	background-position: left top;
+	width: 100%;
+	height: 100px;
+	display:block;
+}
+
+.map_italy{
+	z-index: 10;
+	width: 500px;
+	height: 575px;
+	max-width: 1440px;
+	max-height: 960px; 
+	margin: 0 auto;
+	background: rgba(255,255,255,0.8);
+	border-radius: 20px;
+	margin-bottom:30px;
+}
+
+.mainContent 
+{
+background: url(../img/sfondo_mix.jpg) no-repeat;
+background-attachment:fixed;
+width:100%;
+height:100%; 
+background-size:cover;
 }

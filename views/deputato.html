@@ -1,8 +1,7 @@
-<h1>Deputato</h1>
 
 <div>{{row_count}}</div>
 
-<table cellpadding="1" border="1" width="100%">
+<table class="face-table" cellpadding="1" width="100%">
     <tr ng-repeat="(itemY, count) in yValues">
         <td ng-repeat="(itemX, count) in xValues">
             <span class="face-container" ng-repeat="row in result2[itemX][itemY]">
