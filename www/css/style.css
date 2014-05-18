@@ -30,6 +30,23 @@ img.face-clip {
 
 
 /*
+ * Deputato Page
+ */
+.face-table
+.face-table, th, td
+{
+    border: 2px  #babec3;
+    border-top-style:dotted ;
+    border-right-style:dotted ;
+    border-bottom-style:dotted ;
+    border-left-style: dotted solid;
+    border-style:dotted ;
+    padding: 5px  #babec3;
+    column-rule-style:dotted;
+    text-align: center;
+}
+
+/*
  * Axis
  */
 .axis text {
