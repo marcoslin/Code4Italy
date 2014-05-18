@@ -1,0 +1,11 @@
+SELECT DISTINCT *
+WHERE {
+  ?votazione ocd:rif_leg ocdleg:repubblica_17; 
+  a ocd:votazione. ?votazione ocd:votazioneFinale 1;
+  dc:title ?title; 
+  dc:date ?date; 
+  dc:description ?description;
+  dc:type ?type;  
+  ocd:votazioneSegreta ?segreta;
+  ocd:approvato ?approvato
+}
