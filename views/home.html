@@ -1,12 +1,16 @@
 <H1>Home Page</H1>
 
+
+
 <table>
     <tr>
         <td>Collegio</td>
         <td>Count</td>
     </tr>
-    <tr ng-repeat="row in result">
-        <td><a ng-href="#/deputato?collegio={{row.collegio.value}}">{{row.collegio.value}}</a></td>
-        <td>{{row["callret-0"].value}}</td>
+    <tr ng-repeat="(key, count) in result">
+        <td><a ng-href="#/deputato?collegio={{key}}">{{key}}</a></td>
+        <td>{{count}}</td>
     </tr>
 </table>
+
+<div>Hardcoded PIEMONTE 1: {{result["PIEMONTE 1"]}}</div>
