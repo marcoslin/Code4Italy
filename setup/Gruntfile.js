@@ -65,7 +65,7 @@ module.exports = function (grunt) {
                 files: [
                     {
                         cwd: '<%= cvars.www %>', dest: '<%= cvars.dist_www %>/',
-                        src: ['css/**', 'images/**', 'dta/**', 'js/**', 'views/**']
+                        src: ['css/**', 'img/**', 'dta/**', 'js/**', 'views/**']
                     }
                 ]
             }
