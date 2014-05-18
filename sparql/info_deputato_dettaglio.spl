@@ -35,4 +35,3 @@ WHERE {
         OPTIONAL{?persona foaf:account ?accountFb. ?accountFb foaf:accountServiceHomepage ?facebook. FILTER(REGEX(STR(?facebook),'facebook.com'))} 
         OPTIONAL{?persona foaf:account ?accountYt . ?accountYt foaf:accountServiceHomepage ?youtube. FILTER(REGEX(STR(?youtube),'youtube.com'))}
 }
-LIMIT 10
