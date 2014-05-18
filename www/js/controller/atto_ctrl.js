@@ -37,7 +37,7 @@
 
         // Get intervento
         var intervento_sql_01 = "select distinct * where { OPTIONAL {?intervento ocd:rif_deputato ",
-            intervento_sql_02 = " . ?intervento a ocd:intervento} }",
+            intervento_sql_02 = " . ?intervento a ocd:intervento} ?intervento  dc:title ?interventoRif. }",
             intervento_sql = intervento_sql_01 + deputato_param + intervento_sql_02
             ;
         SPARQL.getData(intervento_sql).then(function (data) {
@@ -90,7 +90,15 @@
                                 +"}";
         deputato_full_sql = deputato_full_sql.replace(/\?deputato/g, deputato_param);
         SPARQL.getData(deputato_full_sql).then(function (data) {
-            $scope.deputato_full = data.data.results.bindings;
+            var deputato = data.data.results.bindings;
+            if (deputato.length > 1){
+                for (var i = 0; i < deputato.length; i++){
+                    if (deputato[0].commissione.value != deputato[i].commissione.value){
+                        deputato[0].commissione.value += "\nCommissione: "+deputato[i].commissione.value;
+                    }
+                }
+            }
+            $scope.deputato_full = data.data.results.bindings[0];
             $log.log("Deputato full: ", $scope.deputato_full);
         });
 
