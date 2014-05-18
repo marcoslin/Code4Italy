@@ -1,5 +1,11 @@
+.face-container {
+    width: 100px;
+    height: 100px;
+}
+
 img.face-clip {
-    width: 160px; height: 160px;
+    width: 100px;
+    height: 100px;
     border-radius: 100px;
 }
 
@@ -20,4 +26,19 @@ img.face-clip {
 .column1{
     width: 33.3%;
     float: left;
+}
+
+
+/*
+ * Axis
+ */
+.axis text {
+    font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
 }

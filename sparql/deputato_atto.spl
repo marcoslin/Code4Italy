@@ -1,5 +1,1 @@
-select distinct * where { OPTIONAL {?atto ocd:primo_firmatario
-<http://dati.camera.it/ocd/deputato.rdf/d305612_17>
- . ?atto a ocd:atto.} OPTIONAL {?atto ocd:altro_firmatario
-<http://dati.camera.it/ocd/deputato.rdf/d305612_17>
- . ?atto a ocd:atto.} }
+select distinct * where { OPTIONAL {?atto ocd:primo_firmatario ?deputato. ?atto a ocd:atto.} OPTIONAL {?atto ocd:altro_firmatario ?deputato . ?atto a ocd:atto.} ?atto dc:title ?nomeAtto}
