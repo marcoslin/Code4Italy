@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="red">#900</color>
+    <color name="green">#090</color>
+    <color name="blue">#009</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="jordyblue">#89C4F4</color>
+    <color name="chambray">#3a539b</color>
+    <color name="madison">#2c3e50</color>
+    <color name="contour">#34495e</color>
+
+</resources>
