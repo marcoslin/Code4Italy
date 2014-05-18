@@ -1,10 +1,1 @@
-select distinct * where { OPTIONAL {?atto ocd:primo_firmatario
-?deputato
- . ?atto a ocd:atto.} OPTIONAL {?atto ocd:altro_firmatario
-?deputato
- . ?atto a ocd:atto.} 
-
-?atto dc:title ?nomeAtto.
-?atto dc:description ?descrizioneAtto
-
-}
+select distinct * where { OPTIONAL {?atto ocd:primo_firmatario ?deputato. ?atto a ocd:atto.} OPTIONAL {?atto ocd:altro_firmatario ?deputato . ?atto a ocd:atto.} ?atto dc:title ?nomeAtto}
