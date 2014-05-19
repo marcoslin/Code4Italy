@@ -37,11 +37,6 @@ public class MainSparqlQuery extends ListFragment {
 
     private static String sqlCollegio;
 
-    private static final String VTYPE = "vehicleType";
-    private static final String VCOLOR = "vehicleColor";
-    private static final String FUEL = "fuel";
-    private static final String TREAD = "treadType";
-
     ArrayList<HashMap<String, String>> jsonlist = new ArrayList<HashMap<String, String>>();
 
     ListView lv;
@@ -93,7 +88,7 @@ public class MainSparqlQuery extends ListFragment {
             }
             ListAdapter adapter = new SimpleAdapter(context, jsonlist,
                     R.layout.list_item, new String[]{"collegioValue", "countValue"}, new int[]{
-                    R.id.vehicleType, R.id.vehicleColor}
+                    R.id.collegioValue, R.id.countValue}
             );
 
             setListAdapter(adapter);
@@ -166,7 +161,7 @@ public class MainSparqlQuery extends ListFragment {
         super.onListItemClick(l, v, position, id);
         String selectedFromList = ((HashMap<String,String>)lv.getItemAtPosition(position)).get("collegioValue");
 
-        Intent mIntent = new Intent(getActivity(), SecondarySparqlQuery.class);
+        Intent mIntent = new Intent(getActivity(), DeputiesActivity.class);
         mIntent.putExtra("collegio", selectedFromList);
         startActivity(mIntent);
 

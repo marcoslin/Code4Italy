@@ -56,6 +56,8 @@ public class DeputyActivity extends Activity {
 
     private String nomedeputato;
 
+    ArrayList<HashMap<String, String>> idattiList = new ArrayList<HashMap<String, String>>();
+
     ArrayList<HashMap<String, String>> jsonlist = new ArrayList<HashMap<String, String>>();
 
     private ListView lv;
@@ -233,17 +235,13 @@ public class DeputyActivity extends Activity {
             if (dialog.isShowing()) {
                 dialog.dismiss();
             }
-            ListAdapter adapter = new SimpleAdapter(context, jsonlist,
-                    R.layout.list_item_second, new String[]{"attoValue"}, new int[]{
-                    R.id.vehicleType}
-            );
 
 
 
             // select single ListView item
-            lv.setAdapter(adapter);
+           // lv.setAdapter(adapter);
 
-            for ( HashMap<String,String> uriMap : jsonlist) {
+            for ( HashMap<String,String> uriMap : idattiList) {
                    String uri = uriMap.get("attoValue");
                    new ActTask(activity).execute(uri);
 
@@ -296,7 +294,7 @@ public class DeputyActivity extends Activity {
                         // Add child node to HashMap key & value
                         map.put("attoValue", attovalue);
 
-                        jsonlist.add(map);
+                        idattiList.add(map);
 
 
 
@@ -343,7 +341,7 @@ public class DeputyActivity extends Activity {
             }
             ListAdapter adapter = new SimpleAdapter(context, jsonlist,
                     R.layout.list_item_second, new String[]{"attoValue"}, new int[]{
-                    R.id.vehicleType}
+                    R.id.collegioValue}
             );
 
 

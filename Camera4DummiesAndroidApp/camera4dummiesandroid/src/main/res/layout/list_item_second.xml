@@ -9,17 +9,17 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
     <TextView
-        android:id="@+id/vehicleType"
+        android:id="@+id/collegioValue"
         android:textStyle="bold"
         android:textSize="23dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="vehicleType" />
+        android:text="" />
         <TextView
-            android:id="@+id/vehicleColor"
+            android:id="@+id/countValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tipo Atto" />
+            android:text="" />
 
     </LinearLayout>
 
