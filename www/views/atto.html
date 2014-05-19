@@ -60,47 +60,48 @@
 </div>
 
 <script id="select_atto" type="text/ng-template">
-SELECT
-    distinct *
+SELECT DISTINCT
+    ?atto ?nomeAtto ?primo_firmatario ?altro_firmatario
 WHERE {
-    OPTIONAL {
-        ?atto ocd:primo_firmatario <{{deputato}}> .
-        ?atto a ocd:atto .
+    ?atto a ocd:atto; dc:title ?nomeAtto
+    {
+        ?atto ocd:primo_firmatario <{{deputato}}>;
+        dc:date ?primo_firmatario
     }
-    OPTIONAL {
-        ?atto ocd:altro_firmatario <{{deputato}}> .
-        ?atto a ocd:atto .
+UNION
+    {
+        ?atto ocd:altro_firmatario <{{deputato}}>;
+        dc:date ?altro_firmatario
     }
-    ?atto dc:title ?nomeAtto
 }
 </script>
 
 <script id="select_aic" type="text/ng-template">
-SELECT
-    distinct *
+SELECT DISTINCT
+    ?aic ?title ?primo_firmatario ?altro_firmatario
 WHERE {
-    OPTIONAL {
-        ?aic ocd:primo_firmatario <{{deputato}}> .
-        ?aic a ocd:aic
+    ?aic a ocd:aic;
+    ocd:rif_leg <{{legislatura_uri}}>;
+    dc:title ?title .
+    {
+        ?aic ocd:primo_firmatario <{{deputato}}>;
+        dc:identifier ?primo_firmatario
     }
-    OPTIONAL {
-        ?aic ocd:altro_firmatario <{{deputato}}> .
-        ?aic a ocd:aic
+    UNION
+    {
+        ?aic ocd:altro_firmatario <{{deputato}}>;
+        dc:identifier ?altro_firmatario
     }
-    ?aic dc:title ?title .
-    ?aic dc:description ?descrizione
 }
 </script>
 
 <script id="select_intervento" type="text/ng-template">
-SELECT
-    distinct *
+SELECT DISTINCT
+    ?intervento ?interventoRif
 WHERE {
-    OPTIONAL {
-        ?intervento ocd:rif_deputato <{{deputato}}> .
-        ?intervento a ocd:intervento
-    }
-    ?intervento dc:title ?interventoRif
+    ?intervento a ocd:intervento;
+    ocd:rif_deputato <{{deputato}}>;
+    dc:title ?interventoRif
 }
 </script>
 
