@@ -1,13 +1,16 @@
 
 <div class="profilo_deputato" >
     <img src="{{deputato_full.img.value}}" alt="{{deputato_full.cognome.value}} {{deputato_full.nome.value}}"> <br />
-    Nome: {{deputato_full.nome.value}} <br />
-    Cognome: {{deputato_full.cognome.value}} <br />
+    {{deputato_full.name.value}} <br />
+    {{deputato_full.description.value}} <br />
     Data di nascita: {{deputato_full.dataNascita.value}} <br />
     Luogo di nascita: {{deputato_full.luogoNascita .value}} <br />
-    <div style="white-space: pre-line ;">Commissione: {{deputato_full.commissione.value}} </div>
-    Sesso: {{deputato_full.categoryY.value}} <br />
-    Partito: {{deputato_full.categoryX.value}} <br />
+    Sesso: {{deputato_full.gender.value}} <br />
+    Partito: {{deputato_full.gruppo_label.value}} <br />
+    <div ng-repeat="comm in deputato_commissione">
+        Commissione: {{comm}}
+    </div>
+
     <div ng-show="deputato_full.twitter.value">
         Twitter : <a href="{{deputato_full.twitter.value}}">LINK</a>
     </div>
@@ -17,6 +20,7 @@
     <div ng-show="deputato_full.youtube.value">
         YouTube: <a href="{{deputato_full.youtube.value}}">LINK</a>
     </div>
+
 </div>
 
 <div class="column1">
@@ -123,54 +127,59 @@ WHERE {
 
 <script  id="select_bio" type="text/ng-template">
 SELECT DISTINCT
-    <{{deputato}}> ?nome ?cognome ?dataNascita ?luogoNascita ?commissione ?img ?categoryY ?categoryX ?twitter ?facebook ?youtube
+    ?name ?description ?dataNascita ?luogoNascita ?img ?gender ?gruppo_label ?twitter ?facebook ?youtube
 WHERE {
     <{{deputato}}> a ocd:deputato;
-    foaf:firstName ?nome; foaf:surname ?cognome; foaf:gender ?categoryY;
-    foaf:depiction ?img; ocd:rif_leg <{{legislatura_uri}}>; ocd:rif_mandatoCamera ?mandato .
+        dc:description ?description;
+        foaf:depiction ?img;
+        ocd:rif_leg <{{legislatura_uri}}>;
+        ocd:rif_mandatoCamera ?mandato;
+        ocd:aderisce ?aderisce .
 
-            ?persona ocd:rif_mandatoCamera ?mandato; a foaf:Person. ?mandato ocd:rif_elezione ?elezione .
+    ?persona ocd:rif_mandatoCamera ?mandato;
+        a foaf:Person;
+        dc:title ?name;
+        foaf:gender ?gender
 
-            FILTER NOT EXISTS{ ?mandato ocd:endDate ?date }
-
-    <{{deputato}}> ocd:aderisce ?aderisce.
-
-            OPTIONAL{
-            ?persona <http://purl.org/vocab/bio/0.1/Birth> ?nascita .
-            ?nascita <http://purl.org/vocab/bio/0.1/date> ?dataNascita; ocd:rif_luogo ?luogoNascitaUri .
-                    ?luogoNascitaUri dc:title ?luogoNascita.
+    OPTIONAL{
+        ?persona bio:Birth ?nascita .
+        ?nascita bio:date ?dataNascita; ocd:rif_luogo ?luogoNascitaUri .
+        ?luogoNascitaUri dc:title ?luogoNascita
     }
-
-    ?aderisce ocd:rif_gruppoParlamentare ?gruppo .
-            ?gruppo <http://purl.org/dc/terms/alternative> ?categoryX .
-            MINUS{
-            ?aderisce ocd:endDate ?fineAdesione
-    }
-
-    <{{deputato}}> ocd:membro ?membro .
-    ?membro ocd:rif_organo ?organo .
-    ?organo dc:title ?commissione .
-
-    MINUS{
-        ?membro ocd:endDate ?fineMembership
-    }
-
     OPTIONAL{
         ?persona foaf:account ?accountTw .
         ?accountTw foaf:accountServiceHomepage ?twitter .
         FILTER(REGEX(STR(?twitter),'twitter.com'))
     }
-
     OPTIONAL{
         ?persona foaf:account ?accountFb .
-                ?accountFb foaf:accountServiceHomepage ?facebook .
-                FILTER(REGEX(STR(?facebook),'facebook.com'))
+        ?accountFb foaf:accountServiceHomepage ?facebook .
+        FILTER(REGEX(STR(?facebook),'facebook.com'))
     }
 
     OPTIONAL{
         ?persona foaf:account ?accountYt .
-                ?accountYt foaf:accountServiceHomepage ?youtube .
-                FILTER(REGEX(STR(?youtube),'youtube.com'))
+        ?accountYt foaf:accountServiceHomepage ?youtube .
+        FILTER(REGEX(STR(?youtube),'youtube.com'))
+    }
+
+    ?aderisce ocd:rif_gruppoParlamentare ?gruppo .
+    ?gruppo <http://purl.org/dc/terms/alternative> ?gruppo_label .
+    MINUS{
+        ?aderisce ocd:endDate ?fineAdesione
+    }
+}
+</script>
+
+<script  id="select_commissione" type="text/ng-template">
+SELECT DISTINCT
+    ?commissione
+WHERE {
+    <{{deputato}}> a ocd:deputato; ocd:membro ?membro .
+    ?membro ocd:rif_organo ?organo .
+    ?organo dc:title ?commissione
+    MINUS{
+        ?membro ocd:endDate ?fineMembership
     }
 }
 </script>

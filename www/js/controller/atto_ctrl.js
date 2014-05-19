@@ -32,27 +32,33 @@
             $scope.intervento_count = $scope.intervento_result.length;
             // $log.log("Intervento: ", $scope.intervento_result);
         });
-        
-        // Get deputato
-        SPARQL.getData("select_bio", params).then(function (data) {
-            var deputato = data.data.results.bindings;
-            if (deputato.length > 1){
-                for (var i = 0; i < deputato.length; i++){
-                    if (deputato[0].commissione.value != deputato[i].commissione.value){
-                        deputato[0].commissione.value += "\nCommissione: "+deputato[i].commissione.value;
-                    }
-                }
-            }
-            $scope.deputato_full = data.data.results.bindings[0];
-            // $log.log("Deputato full: ", $scope.deputato_full);
-        });
 
-        
         // Get Legge
         SPARQL.getData("select_legge", params).then(function (data) {
             $scope.leggi_result = data.data.results.bindings;
             // $log.log("Leggi: ", $scope.leggi_result);
         });
+
+        // Get deputato
+        SPARQL.getData("select_bio", params).then(function (data) {
+            var deputato = data.data.results.bindings;
+            if (deputato.length > 0) {
+                $scope.deputato_full = data.data.results.bindings[0];
+                // $log.log("Deputato full: ", $scope.deputato_full);
+            }
+
+        });
+
+        // Get Commissione
+        SPARQL.getData("select_commissione", params).then(function (data) {
+            var comm = data.data.results.bindings,
+                res_comm = [];
+            for (var i = 0; i < comm.length; i += 1) {
+                res_comm.push(comm[i].commissione.value);
+            }
+            $scope.deputato_commissione = res_comm;
+        });
+
         
         
     }]);
