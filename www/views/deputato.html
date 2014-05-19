@@ -1,6 +1,4 @@
 
-<div>{{row_count}}</div>
-
 <table class="face-table" cellpadding="1" width="100%">
     <tr ng-repeat="(itemY, count) in yValues">
         <td ng-repeat="(itemX, count) in xValues">
@@ -19,3 +17,28 @@
 </table>
 
 
+<script id="select_deputato" type="text/ng-template">
+    SELECT
+        distinct ?deputato ?nome ?cognome ?img ?categoryY ?categoryX
+    WHERE {
+        ?deputato a ocd:deputato;
+            ocd:rif_leg <{{legislatura_uri}}>;
+            foaf:firstName ?nome; foaf:surname ?cognome;
+            foaf:gender ?categoryY; foaf:depiction ?img;
+            ocd:rif_mandatoCamera ?mandato;
+            ocd:aderisce ?aderisce .
+
+        ?aderisce ocd:rif_gruppoParlamentare ?gruppo .
+        ?gruppo <http://purl.org/dc/terms/alternative> ?categoryX .
+
+        ?mandato ocd:rif_elezione ?elezione . ?elezione dc:coverage "{{collegio}}" .
+
+        FILTER NOT EXISTS{
+            ?mandato ocd:endDate ?date
+        }
+        MINUS{
+            ?aderisce ocd:endDate ?fineAdesione
+        }
+    }
+
+</script>
