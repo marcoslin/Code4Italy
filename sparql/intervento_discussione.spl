@@ -1,0 +1,10 @@
+# Show a list of discussion and count of intervento
+SELECT DISTINCT
+    ?interventoRif ?discussione ?title count(distinct ?intervento) as ?intervento_count
+WHERE {
+    ?intervento a ocd:intervento;
+    ocd:rif_deputato <http://dati.camera.it/ocd/deputato.rdf/d305602_17>;
+    dc:title ?interventoRif .
+
+?discussione a ocd:discussione; ocd:rif_intervento ?intervento; dc:title ?title
+}
