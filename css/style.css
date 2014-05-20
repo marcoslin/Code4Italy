@@ -39,7 +39,8 @@ img.face-clip {
 .face-table
 .face-table, th, td
 {
-    border: 2px  #babec3;
+    border: 1px  #222;
+    border-radius: 20px;
     border-top-style:dotted ;
     border-right-style:dotted ;
     border-bottom-style:dotted ;
@@ -64,28 +65,24 @@ img.face-clip {
     shape-rendering: crispEdges;
 }
 
-
-/*ksjdbfnjhsdbfjahdsbghjkadfb*/
-
 html, body 
 {
 	margin:0px;
 	padding: 0px;
 	color: #2c3E50;
-	background: transparent;
-	/*
-	#3A5398 blue più scuro
-	# 89C4F4 celeste 
-	*/ 
+	background: url('../img/sfondo_mix.jpg') no-repeat;
+	background-attachment:fixed;
+	background-size:cover;
+	font-family: 'Lato', sans-serif;
 } 
 
 #header a{
 	background-image: url(../img/header_s.png); 
 	background-repeat: no-repeat;
-	background-position: left top;
 	width: 100%;
 	height: 100px;
 	display:block;
+	margin-bottom:20px;
 }
 
 .map_italy{
@@ -95,16 +92,36 @@ html, body
 	max-width: 1440px;
 	max-height: 960px; 
 	margin: 0 auto;
-	background: rgba(255,255,255,0.8);
+	//background: rgba(255,255,255,0.5);
 	border-radius: 20px;
 	margin-bottom:30px;
 }
 
 .mainContent 
 {
-background: url(../img/sfondo_mix.jpg) no-repeat;
-background-attachment:fixed;
-width:100%;
-height:100%; 
-background-size:cover;
+	margin: 0 auto;
+	background: rgba(255,255,255,0.5);
+	border-radius: 15px;
+	width:85%;
+	height:100%; 
+	margin-bottom:20px;
+}
+
+.footer{
+	background: url('../img/footer.png') no-repeat;
+	width: 650px;
+	height: 30px;
+	color: #222;
+	border-radius: 15px;
+	text-align: center;
+	margin:0 auto;
+	font-size: 16px;
+}
+
+.footer a{
+	color: #FFF;
+	text-decoration: none;
+}
+.footer a:hover {
+	color: red;
 }
