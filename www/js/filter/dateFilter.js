@@ -7,7 +7,7 @@ angular.module('c4iapp').filter('birthDate', function($filter)
 	 {
 		if(input == null){ return ""; } 
 	 
-		var _date = $filter('date')(new Date(input), 'dd/MM/yyyy');
+		var _date = $filter('birthDate')(new Date(input), 'dd/MM/yyyy');
 	 
 		return _date.toUpperCase();
 
