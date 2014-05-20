@@ -12,9 +12,11 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -54,6 +56,8 @@ public class DeputyActivity extends Activity {
 
     private String nomedeputato;
 
+    ArrayList<HashMap<String, String>> idattiList = new ArrayList<HashMap<String, String>>();
+
     ArrayList<HashMap<String, String>> jsonlist = new ArrayList<HashMap<String, String>>();
 
     private ListView lv;
@@ -63,6 +67,8 @@ public class DeputyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
         setContentView(R.layout.slidingpanel);
 
         mLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
@@ -229,17 +235,13 @@ public class DeputyActivity extends Activity {
             if (dialog.isShowing()) {
                 dialog.dismiss();
             }
-            ListAdapter adapter = new SimpleAdapter(context, jsonlist,
-                    R.layout.list_item_second, new String[]{"attoValue"}, new int[]{
-                    R.id.vehicleType}
-            );
 
 
 
             // select single ListView item
-            lv.setAdapter(adapter);
+           // lv.setAdapter(adapter);
 
-            for ( HashMap<String,String> uriMap : jsonlist) {
+            for ( HashMap<String,String> uriMap : idattiList) {
                    String uri = uriMap.get("attoValue");
                    new ActTask(activity).execute(uri);
 
@@ -292,7 +294,7 @@ public class DeputyActivity extends Activity {
                         // Add child node to HashMap key & value
                         map.put("attoValue", attovalue);
 
-                        jsonlist.add(map);
+                        idattiList.add(map);
 
 
 
@@ -339,7 +341,7 @@ public class DeputyActivity extends Activity {
             }
             ListAdapter adapter = new SimpleAdapter(context, jsonlist,
                     R.layout.list_item_second, new String[]{"attoValue"}, new int[]{
-                    R.id.vehicleType}
+                    R.id.collegioValue}
             );
 
 
@@ -404,5 +406,17 @@ public class DeputyActivity extends Activity {
 
             return null;
         }
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

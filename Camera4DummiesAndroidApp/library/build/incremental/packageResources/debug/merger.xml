@@ -2,14 +2,14 @@
 <merger>
 
     <dataSet config="main" >
-        <source path="/Users/joaobiriba/Documents/Projects/Camera4Dummies/library/res" >
+        <source path="/Users/joaobiriba/Documents/Projects/Code4Italy/Camera4DummiesAndroidApp/library/res" >
             <file
                 name="slidingmenumain"
-                path="/Users/joaobiriba/Documents/Projects/Camera4Dummies/library/res/layout/slidingmenumain.xml"
+                path="/Users/joaobiriba/Documents/Projects/Code4Italy/Camera4DummiesAndroidApp/library/res/layout/slidingmenumain.xml"
                 qualifiers=""
                 type="layout" />
             <file
-                path="/Users/joaobiriba/Documents/Projects/Camera4Dummies/library/res/values/attrs.xml"
+                path="/Users/joaobiriba/Documents/Projects/Code4Italy/Camera4DummiesAndroidApp/library/res/values/attrs.xml"
                 qualifiers="" >
                 <declare-styleable name="SlidingMenu" >
                     <attr name="mode" >
@@ -78,18 +78,18 @@
                 </declare-styleable>
             </file>
             <file
-                path="/Users/joaobiriba/Documents/Projects/Camera4Dummies/library/res/values/ids.xml"
+                path="/Users/joaobiriba/Documents/Projects/Code4Italy/Camera4DummiesAndroidApp/library/res/values/ids.xml"
                 qualifiers="" >
                 <item
                     name="selected_view"
                     type="id"/>
             </file>
         </source>
-        <source path="/Users/joaobiriba/Documents/Projects/Camera4Dummies/library/build/res/rs/debug" />
-        <source path="/Users/joaobiriba/Documents/Projects/Camera4Dummies/library/build/res/generated/debug" />
+        <source path="/Users/joaobiriba/Documents/Projects/Code4Italy/Camera4DummiesAndroidApp/library/build/res/rs/debug" />
+        <source path="/Users/joaobiriba/Documents/Projects/Code4Italy/Camera4DummiesAndroidApp/library/build/res/generated/debug" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="/Users/joaobiriba/Documents/Projects/Camera4Dummies/library/src/debug/res" />
+        <source path="/Users/joaobiriba/Documents/Projects/Code4Italy/Camera4DummiesAndroidApp/library/src/debug/res" />
     </dataSet>
 
 </merger>

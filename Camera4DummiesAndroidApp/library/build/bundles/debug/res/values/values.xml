@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- From: file:/Users/joaobiriba/Documents/Projects/Camera4Dummies/library/res/values/attrs.xml -->
+    <!-- From: file:/Users/joaobiriba/Documents/Projects/Code4Italy/Camera4DummiesAndroidApp/library/res/values/attrs.xml -->
     <eat-comment />
 
     <declare-styleable name="SlidingMenu">
@@ -31,7 +31,7 @@
         <attr name="selectorEnabled" format="boolean" />
         <attr name="selectorDrawable" format="reference" />
     </declare-styleable>
-    <!-- From: file:/Users/joaobiriba/Documents/Projects/Camera4Dummies/library/res/values/ids.xml -->
+    <!-- From: file:/Users/joaobiriba/Documents/Projects/Code4Italy/Camera4DummiesAndroidApp/library/res/values/ids.xml -->
     <eat-comment />
 
     <item name="selected_view" type="id"/>
