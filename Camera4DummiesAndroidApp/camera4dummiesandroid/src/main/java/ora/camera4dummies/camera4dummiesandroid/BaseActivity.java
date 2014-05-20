@@ -3,6 +3,7 @@ package ora.camera4dummies.camera4dummiesandroid;
 /**
  * Created by joaobiriba on 17/05/14.
  */
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -59,7 +60,7 @@ public class BaseActivity extends SlidingFragmentActivity {
                 toggle();
                 return true;
             case R.id.github:
-               // Util.goToGitHub(this);
+                // Util.goToGitHub(this);
                 return true;
         }
         return super.onOptionsItemSelected(item);

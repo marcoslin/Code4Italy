@@ -3,6 +3,7 @@ package ora.camera4dummies.camera4dummiesandroid;
 /**
  * Created by joaobiriba on 17/05/14.
  */
+
 import android.os.Bundle;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -27,7 +28,7 @@ public class LeftAndRightActivity extends BaseActivity {
                 .commit();
 
 
-      getSlidingMenu().setMenu(R.layout.menu_frame_three);
+        getSlidingMenu().setMenu(R.layout.menu_frame_three);
         getSlidingMenu().setShadowDrawable(R.drawable.shadowleft);
         getSupportFragmentManager()
                 .beginTransaction()
@@ -50,9 +51,6 @@ public class LeftAndRightActivity extends BaseActivity {
                 .beginTransaction()
                 .replace(R.id.menu_frame, new MapFragment())
                 .commit();
-
-
-
 
 
     }

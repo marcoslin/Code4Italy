@@ -13,6 +13,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -42,7 +43,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class DeputyActivity extends Activity {
+public class DeputyActivity extends ActionBarActivity {
     private static final String TAG = "DeputyActivity";
 
     private static String url_pre = "http://dati.camera.it/sparql?default-graph-uri=&query=";
@@ -67,7 +68,7 @@ public class DeputyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setContentView(R.layout.slidingpanel);
 
@@ -98,7 +99,7 @@ public class DeputyActivity extends Activity {
             }
         });
 
-        pd = (ProgressBar)findViewById(R.id.progressBar);
+        pd = (ProgressBar) findViewById(R.id.progressBar);
 
         TextView t = (TextView) findViewById(R.id.name);
         String name = getIntent().getExtras().getString("name");
@@ -126,7 +127,7 @@ public class DeputyActivity extends Activity {
         View header = inflater.inflate(R.layout.header, null, false);
 
         lv.addHeaderView(header);
-        new ProgressTask(this).execute();
+        new ActTask(this).execute();
 
     }
 
@@ -135,7 +136,6 @@ public class DeputyActivity extends Activity {
         super.onSaveInstanceState(outState);
         outState.putBoolean(SAVED_STATE_ACTION_BAR_HIDDEN, mLayout.isExpanded());
     }
-
 
 
     private int getActionBarHeight() {
@@ -169,7 +169,6 @@ public class DeputyActivity extends Activity {
             }
         }
     }
-
 
 
     class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
@@ -237,13 +236,12 @@ public class DeputyActivity extends Activity {
             }
 
 
-
             // select single ListView item
-           // lv.setAdapter(adapter);
+            // lv.setAdapter(adapter);
 
-            for ( HashMap<String,String> uriMap : idattiList) {
-                   String uri = uriMap.get("attoValue");
-                   new ActTask(activity).execute(uri);
+            for (HashMap<String, String> uriMap : idattiList) {
+                String uri = uriMap.get("attoValue");
+                new ActTask(activity).execute(uri);
 
             }
         }
@@ -289,13 +287,12 @@ public class DeputyActivity extends Activity {
 
 
                         String attovalue = atto.getString("value");
-                        HashMap<String,String> map = new HashMap<String, String>();
+                        HashMap<String, String> map = new HashMap<String, String>();
 
                         // Add child node to HashMap key & value
                         map.put("attoValue", attovalue);
 
                         idattiList.add(map);
-
 
 
                     } catch (JSONException e) {
@@ -310,8 +307,6 @@ public class DeputyActivity extends Activity {
             return null;
         }
     }
-
-
 
 
     private class ActTask extends AsyncTask<String, String, Boolean> {
@@ -345,7 +340,6 @@ public class DeputyActivity extends Activity {
             );
 
 
-
             // select single ListView item
             lv.setAdapter(adapter);
         }
@@ -355,18 +349,16 @@ public class DeputyActivity extends Activity {
             JSONParser jParser = new JSONParser();
             // get JSON data from URL
             JSONObject json = null;
-            nomedeputato =  getIntent().getExtras().getString("id");
-            String identifier = args[0];
+            nomedeputato = getIntent().getExtras().getString("id");
 
             String query = "select distinct * where { OPTIONAL {?atto ocd:primo_firmatario ?deputato. ?atto a ocd:atto.} OPTIONAL {?atto ocd:altro_firmatario ?deputato . ?atto a ocd:atto.} ?atto dc:title ?nomeAtto}";
 
-            String rquery = query.replace("?deputato","<"+nomedeputato+">");
+            String rquery = query.replace("?deputato", "<" + nomedeputato + ">");
 
             String urlstring = null;
             try {
                 urlstring = URLEncoder.encode(rquery, "utf-8");
                 String eee = url_pre + rquery + url_pos;
-                Log.i("AAA", eee);
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
@@ -388,7 +380,7 @@ public class DeputyActivity extends Activity {
 
 
                         String attovalue = atto.getString("value");
-                        HashMap<String,String> map = new HashMap<String, String>();
+                        HashMap<String, String> map = new HashMap<String, String>();
 
                         // Add child node to HashMap key & value
                         map.put("attoValue", attovalue);

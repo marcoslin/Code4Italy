@@ -47,8 +47,8 @@ public class JSONParser {
                 while ((line = reader.readLine()) != null) {
                     builder.append(line);
                 }
-                builder.setLength(builder.length()-1);
-                builder.delete(0,14);
+                builder.setLength(builder.length() - 1);
+                builder.delete(0, 14);
             } else {
                 Log.e("==>", "Failed to download file");
             }
@@ -60,7 +60,7 @@ public class JSONParser {
 
         // Parse String to JSON object
         try {
-            jarray = new JSONObject( builder.toString());
+            jarray = new JSONObject(builder.toString());
         } catch (JSONException e) {
             Log.e("JSON Parser", "Error parsing data " + e.toString());
         }

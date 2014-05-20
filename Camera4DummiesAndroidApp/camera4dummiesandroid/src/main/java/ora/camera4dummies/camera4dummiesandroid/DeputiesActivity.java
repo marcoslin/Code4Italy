@@ -4,15 +4,18 @@ package ora.camera4dummies.camera4dummiesandroid;
  * Created by joaobiriba on 18/05/14.
  */
 
-import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.HeaderViewListAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -26,7 +29,8 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class DeputiesActivity extends ListActivity {
+
+public class DeputiesActivity extends ActionBarActivity {
     private Context context;
     //  private static String url = "http://docs.blackberry.com/sampledata.json";
 
@@ -45,13 +49,51 @@ public class DeputiesActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sparqlsecondquerylayout);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        getListView().setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedFromList = ((HashMap<String, String>) lv.getItemAtPosition(position)).get("img");
+                String name = ((HashMap<String, String>) lv.getItemAtPosition(position)).get("collegioValue");
+                String surname = ((HashMap<String, String>) lv.getItemAtPosition(position)).get("countValue");
+                String idr = ((HashMap<String, String>) lv.getItemAtPosition(position)).get("id");
 
+                Intent intent = new Intent(DeputiesActivity.this, DeputyActivity.class);
+       /* intent.setAction(android.content.Intent.ACTION_VIEW);
+        intent.addCategory(android.content.Intent.CATEGORY_DEFAULT);
+        intent.setDataAndType(Uri.parse(selectedFromList), "image/*");*/
+                intent.putExtra("img", selectedFromList);
+                intent.putExtra("name", name);
+                intent.putExtra("surname", surname);
+                intent.putExtra("id", idr);
+
+                startActivity(intent);
+
+            }
+        });
         new ProgressTask(this).execute();
     }
 
 
+    protected ListView getListView() {
+        if (lv == null) {
+            lv = (ListView) findViewById(android.R.id.list);
+        }
+        return lv;
+    }
+
+    protected void setListAdapter(ListAdapter adapter) {
+        getListView().setAdapter(adapter);
+    }
+
+    protected ListAdapter getListAdapter() {
+        ListAdapter adapter = getListView().getAdapter();
+        if (adapter instanceof HeaderViewListAdapter) {
+            return ((HeaderViewListAdapter) adapter).getWrappedAdapter();
+        } else {
+            return adapter;
+        }
+    }
 
     /*
     @Override
@@ -64,10 +106,10 @@ public class DeputiesActivity extends ListActivity {
     private class ProgressTask extends AsyncTask<String, Void, Boolean> {
         private ProgressDialog dialog;
 
-        private ListActivity activity;
+        private ActionBarActivity activity;
 
         // private List<Message> messages;
-        public ProgressTask(ListActivity activity) {
+        public ProgressTask(ActionBarActivity activity) {
             this.activity = activity;
             context = activity;
             dialog = new ProgressDialog(context);
@@ -88,7 +130,7 @@ public class DeputiesActivity extends ListActivity {
             }
             ListAdapter adapter = new SimpleAdapter(context, jsonlist,
                     R.layout.list_item_second, new String[]{"collegioValue", "countValue"}, new int[]{
-                    R.id.collegioValue, R.id.countValue }
+                    R.id.collegioValue, R.id.countValue}
             );
 
             setListAdapter(adapter);
@@ -164,24 +206,6 @@ public class DeputiesActivity extends ListActivity {
         }
     }
 
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        String selectedFromList = ((HashMap<String, String>) lv.getItemAtPosition(position)).get("img");
-        String name =  ((HashMap<String, String>) lv.getItemAtPosition(position)).get("collegioValue");
-        String surname =  ((HashMap<String, String>) lv.getItemAtPosition(position)).get("countValue");
-        String idr =  ((HashMap<String, String>) lv.getItemAtPosition(position)).get("id");
-
-        Intent intent = new Intent(this, DeputyActivity.class);
-       /* intent.setAction(android.content.Intent.ACTION_VIEW);
-        intent.addCategory(android.content.Intent.CATEGORY_DEFAULT);
-        intent.setDataAndType(Uri.parse(selectedFromList), "image/*");*/
-        intent.putExtra("img", selectedFromList);
-        intent.putExtra("name", name);
-        intent.putExtra("surname", surname);
-        intent.putExtra("id", idr);
-
-        startActivity(intent);
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

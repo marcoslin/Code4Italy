@@ -105,11 +105,12 @@ public class MainSparqlQuery extends ListFragment {
             // get JSON data from URL
             JSONObject json = null;
             try {
-                 String sqlCollegio = URLEncoder.encode(
+                String sqlCollegio = URLEncoder.encode(
                         "select count(distinct ?deputato) as ?count ?collegio where " +
                                 "{ ?deputato a ocd:deputato; ocd:rif_leg <http://dati.camera.it/ocd/legislatura.rdf/repubblica_17>;" +
                                 " ocd:rif_mandatoCamera ?mandato . ?mandato ocd:rif_elezione ?elezione . ?elezione dc:coverage ?collegio . FILTER NOT EXISTS" +
-                                "{ ?mandato ocd:endDate ?date } } group by ?collegio", "utf-8");
+                                "{ ?mandato ocd:endDate ?date } } group by ?collegio", "utf-8"
+                );
 
                 json = jParser.getJSONFromUrl(url_pre + sqlCollegio + url_pos);
             } catch (UnsupportedEncodingException e) {
@@ -117,7 +118,6 @@ public class MainSparqlQuery extends ListFragment {
             }
 
             try {
-
 
 
                 JSONObject result = json.getJSONObject("results");
@@ -130,7 +130,6 @@ public class MainSparqlQuery extends ListFragment {
 
                         JSONObject collegio = bindings.getJSONObject(i).getJSONObject("collegio");
                         JSONObject count = bindings.getJSONObject(i).getJSONObject("count");
-
 
 
                         String collegioValue = collegio.getString("value");
@@ -159,7 +158,7 @@ public class MainSparqlQuery extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        String selectedFromList = ((HashMap<String,String>)lv.getItemAtPosition(position)).get("collegioValue");
+        String selectedFromList = ((HashMap<String, String>) lv.getItemAtPosition(position)).get("collegioValue");
 
         Intent mIntent = new Intent(getActivity(), DeputiesActivity.class);
         mIntent.putExtra("collegio", selectedFromList);

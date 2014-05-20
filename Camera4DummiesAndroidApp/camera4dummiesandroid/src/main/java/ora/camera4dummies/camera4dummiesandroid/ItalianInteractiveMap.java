@@ -19,9 +19,8 @@ import java.util.Map;
 
 /**
  * @author esses77
- *
  */
-public class ItalianInteractiveMap extends Fragment implements View.OnTouchListener{
+public class ItalianInteractiveMap extends Fragment implements View.OnTouchListener {
 
     private final Map<Integer, String> colleggiColori = new HashMap<Integer, String>(27);
     private ImageView hiddenMapImageView = null;
@@ -33,8 +32,8 @@ public class ItalianInteractiveMap extends Fragment implements View.OnTouchListe
     @Override
     public void onResume() {
         // TODO Auto-generated method stub
-      //  hiddenMapImageView = (ImageView)this.getView().findViewById(R.id.interactiveMapHiddenImageView);
-      //  visibleMapImageView = (ImageView)this.getView().findViewById(R.id.interactiveMapVisibleImageView);
+        //  hiddenMapImageView = (ImageView)this.getView().findViewById(R.id.interactiveMapHiddenImageView);
+        //  visibleMapImageView = (ImageView)this.getView().findViewById(R.id.interactiveMapVisibleImageView);
         hiddenMapImageView.setOnTouchListener(this);
 
         super.onResume();
@@ -97,7 +96,6 @@ public class ItalianInteractiveMap extends Fragment implements View.OnTouchListe
         super.onCreate(savedInstanceState);
 
 
-
     }
 
     /* (non-Javadoc)
@@ -142,7 +140,7 @@ public class ItalianInteractiveMap extends Fragment implements View.OnTouchListe
     public boolean onTouch(View v, MotionEvent event) {
         // TODO Auto-generated method stub
 /*		double x = event.getX();
-		double y = event.getY();
+        double y = event.getY();
 		android.util.Log.i(this.getClass().toString(), x +" "+ y);
 
 		ImageView view = (ImageView)v;
@@ -177,39 +175,38 @@ public class ItalianInteractiveMap extends Fragment implements View.OnTouchListe
 
 
 		return false;*/
-        if (event.getAction() == MotionEvent.ACTION_DOWN)
-        {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
             //your code
             float eventX = event.getX();
             float eventY = event.getY();
-            float[] eventXY = new float[] {eventX, eventY};
+            float[] eventXY = new float[]{eventX, eventY};
 
             Matrix invertMatrix = new Matrix();
-            ((ImageView)v).getImageMatrix().invert(invertMatrix);
+            ((ImageView) v).getImageMatrix().invert(invertMatrix);
 
             invertMatrix.mapPoints(eventXY);
-            int x = Integer.valueOf((int)eventXY[0]);
-            int y = Integer.valueOf((int)eventXY[1]);
+            int x = Integer.valueOf((int) eventXY[0]);
+            int y = Integer.valueOf((int) eventXY[1]);
 
-            Drawable imgDrawable = ((ImageView)v).getDrawable();
-            Bitmap bitmap = ((BitmapDrawable)imgDrawable).getBitmap();
+            Drawable imgDrawable = ((ImageView) v).getDrawable();
+            Bitmap bitmap = ((BitmapDrawable) imgDrawable).getBitmap();
 
             //Limit x, y range within bitmap
-            if(x < 0){
+            if (x < 0) {
                 x = 0;
-            }else if(x > bitmap.getWidth()-1){
-                x = bitmap.getWidth()-1;
+            } else if (x > bitmap.getWidth() - 1) {
+                x = bitmap.getWidth() - 1;
             }
 
-            if(y < 0){
+            if (y < 0) {
                 y = 0;
-            }else if(y > bitmap.getHeight()-1){
-                y = bitmap.getHeight()-1;
+            } else if (y > bitmap.getHeight() - 1) {
+                y = bitmap.getHeight() - 1;
             }
 
             int touchedRGB = bitmap.getPixel(x, y);
 
-            android.util.Log.i(this.getClass().toString(),"touched color: " + "#" + Integer.toHexString(touchedRGB)+ " = "+colleggiColori.get(Integer.valueOf(touchedRGB)));
+            android.util.Log.i(this.getClass().toString(), "touched color: " + "#" + Integer.toHexString(touchedRGB) + " = " + colleggiColori.get(Integer.valueOf(touchedRGB)));
         }
 
         return true;
