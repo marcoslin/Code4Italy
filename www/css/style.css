@@ -125,3 +125,13 @@ html, body
 .footer a:hover{
 	color: red;
 }
+
+/*Didascalia per immagine Wikipedia*/
+div.captionbox{float: left;margin: 10px;border: 1px solid #999}
+div.captionbox img{border:0;display:block}
+div.captionbox a{position: relative;float: left;color: #FFF;
+    text-decoration: none}
+div.captionbox span{position:absolute;bottom: 0;width: 100%;padding: 3px 0;
+    background: url(img/opacity.png) repeat-x 0 -100px;
+    cursor: pointer;text-align: center}
+div.captionbox a:hover span{background-position: 0 -200px}
