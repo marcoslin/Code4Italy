@@ -4,8 +4,8 @@
     {{deputato_full.name.value}} <br />
     {{deputato_full.description.value}} <br />
     Data di nascita: {{deputato_full.dataNascita.value | birthDate}} <br />
-    Luogo di nascita: {{deputato_full.luogoNascita.value}} <br />
-    Sesso: {{deputato_full.gender.value | translate}} <br />
+    Luogo di nascita: {{deputato_full.luogoNascita .value}} <br />
+    Sesso: {{deputato_full.gender.value | gender}} <br />
     Partito: {{deputato_full.gruppo_label.value}} <br />
     <div ng-repeat="comm in deputato_commissione">
         Commissione: {{comm}}
