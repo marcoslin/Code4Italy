@@ -3,7 +3,7 @@
     <img src="{{deputato_full.img.value}}" alt="{{deputato_full.cognome.value}} {{deputato_full.nome.value}}"> <br />
     {{deputato_full.name.value}} <br />
     {{deputato_full.description.value}} <br />
-    Data di nascita: {{deputato_full.dataNascita.value}} <br />
+    Data di nascita: {{deputato_full.dataNascita.value | birthDate}} <br />
     Luogo di nascita: {{deputato_full.luogoNascita .value}} <br />
     Sesso: {{deputato_full.gender.value | gender}} <br />
     Partito: {{deputato_full.gruppo_label.value}} <br />
