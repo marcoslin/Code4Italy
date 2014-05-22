@@ -5,7 +5,7 @@
     {{deputato_full.description.value}} <br />
     Data di nascita: {{deputato_full.dataNascita.value}} <br />
     Luogo di nascita: {{deputato_full.luogoNascita .value}} <br />
-    Sesso: {{deputato_full.gender.value}} <br />
+    Sesso: {{deputato_full.gender.value | gender}} <br />
     Partito: {{deputato_full.gruppo_label.value}} <br />
     <div ng-repeat="comm in deputato_commissione">
         Commissione: {{comm}}
