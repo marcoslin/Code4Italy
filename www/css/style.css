@@ -1,3 +1,64 @@
+/* Navigation */
+
+.blue-gradient
+{
+    width: 100%;
+    border-radius: 6px;
+    background: -webkit-linear-gradient(#3d579e, #89c4f4); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#3d579e, #89c4f4); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#3d579e, #89c4f4); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#3d579e, #89c4f4); /* Standard syntax */
+}
+
+.nav-container {
+    padding-top: 10px;
+    padding-right: 50px;
+}
+
+#nav-text {
+    padding-top: 5px;
+    font-weight: bold;
+}
+
+.logo-container {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.logo-text {
+    width: 350px;
+    padding-bottom: 10px;
+}
+
+.nav > li > a {
+    color: darkgrey;
+}
+
+
+
+/* Override Bootstrap */
+.jumbotron {
+    margin-top: 15px;
+    background: rgba(255,255,255,0.6);
+    text-align: center;
+}
+
+/* Home */
+.center-map {
+    margin: 0 auto;
+    width: 500px;
+    height: 574px;
+}
+
+.cite {
+    color: gray;
+    float: right;
+    margin: 10px;
+}
+
+/* === */
+
 .face-container {
     width: 100px;
     height: 100px;
@@ -54,59 +115,15 @@ img.face-clip {
     text-align: center;
 }
 
-/*
- * Axis
- */
-.axis text {
-    font: 10px sans-serif;
-}
 
-.axis path,
-.axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-}
-
-html, body 
+body
 {
-	margin:0px;
-	padding: 0px;
-	color: #2c3E50;
 	background: url('../img/sfondo_mix.jpg') no-repeat;
-	background-attachment:fixed;
-	background-size:cover;
-	font-family: 'Lato', sans-serif;
-} 
-
-#header a{
-	background-image: url(../img/header_s.png); 
-	background-repeat: no-repeat;
-	width: 100%;
-	height: 100px;
-	display:block;
-	margin-bottom:20px;
 }
 
-.map_italy {
-    width: 500px;
-    height: 575px;
-    max-width: 1440px;
-    max-height: 960px;
-    margin: 0 auto;
-    border-radius: 20px;
-    margin-bottom: 30px;
-}
 
-.mainContent 
-{
-	margin: 0 auto;
-	background: rgba(255,255,255,0.5);
-	border-radius: 15px;
-	width:85%;
-	height:100%; 
-	margin-bottom:20px;
-}
+
+
 
 .footer{
 	background: url('../img/footer.png') no-repeat;
@@ -128,6 +145,8 @@ html, body
 }
 
 /*Didascalia per immagine Wikipedia*/
+
+
 div.captionbox{float: left;margin: 10px;border: 1px solid #999}
 div.captionbox img{border:0;display:block}
 div.captionbox a{position: relative;float: left;color: #FFF;
@@ -136,3 +155,6 @@ div.captionbox span{position:absolute;bottom: 0;width: 100%;padding: 3px 0;
     background: url(img/opacity.png) repeat-x 0 -100px;
     cursor: pointer;text-align: center}
 div.captionbox a:hover span{background-position: 0 -200px}
+
+
+

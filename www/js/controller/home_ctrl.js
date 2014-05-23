@@ -31,7 +31,7 @@
         };
 
         // Initialize mapper.js
-        $('#map_image').maphilight();
+        $('.mapper').maphilight().parent().addClass("center-map");
     }]);
 
 })();

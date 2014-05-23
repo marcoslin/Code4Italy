@@ -19,6 +19,18 @@ module.exports = function (grunt) {
 		"port": 8080
 	};
 
+    function getCSSFiles(useMinVersion) {
+        var file_ext = ".css";
+
+        if (useMinVersion) { file_ext = ".min.css"; }
+
+        var file_list = [
+            "bootstrap/dist/css/bootstrap" + file_ext
+        ];
+
+        return file_list;
+    }
+
     function getJSFiles(useMinVersion) {
 		var file_ext = ".js";
 		
@@ -49,6 +61,12 @@ module.exports = function (grunt) {
 		copy: {
 			setup: {
 				files: [
+                    // CSS with standard .min.css naming convention
+                    {
+                        cwd: "bower_components", expand: true, flatten: true,
+                        dest: "<%= cvars.www %>/css/ext/",
+                        src: getCSSFiles()
+                    },
 					// Javascript with standard .min.js naming convention
 					{
 						cwd: "bower_components", expand: true, flatten: true,
