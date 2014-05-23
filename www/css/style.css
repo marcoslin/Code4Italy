@@ -12,6 +12,7 @@ img.face-clip {
 .profilo_deputato {
     float: left;
     width: 33.3%;
+	padding:10px 0px 0px 10px;
 }
 
 .scrollable{
@@ -29,10 +30,7 @@ img.face-clip {
 }
 
 .profilo_deputato div{
-    /*width: 100%;*/
-	float: left;
-    width: 33.3%;
-	padding:10px 0px 0px 10px;
+    width: 100%;
 }
 
 
