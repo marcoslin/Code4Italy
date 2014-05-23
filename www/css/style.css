@@ -88,16 +88,14 @@ html, body
 	margin-bottom:20px;
 }
 
-.map_italy{
-	z-index: 10;
-	width: 500px;
-	height: 575px;
-	max-width: 1440px;
-	max-height: 960px; 
-	margin: 0 auto;
-	//background: rgba(255,255,255,0.5);
-	border-radius: 20px;
-	margin-bottom:30px;
+.map_italy {
+    width: 500px;
+    height: 575px;
+    max-width: 1440px;
+    max-height: 960px;
+    margin: 0 auto;
+    border-radius: 20px;
+    margin-bottom: 30px;
 }
 
 .mainContent 

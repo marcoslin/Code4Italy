@@ -30,6 +30,8 @@
             $location.path("deputato").search("collegio", collegio);
         };
 
+        // Initialize mapper.js
+        $('#map_image').maphilight();
     }]);
 
 })();
