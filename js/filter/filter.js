@@ -12,7 +12,7 @@ angular.module('c4iapp').filter('birthDate', function($filter)
   		anno = input.substr(0,4);
   		mese = input.substr(4,2);
   		giorno = input.substr(6,2);
-		var dataNascita = giorno + "/" + mese + "/" + anno;
+		var dataNascita = giorno + "/" + mese + "/" + giorno;
 	 
 		return dataNascita.toUpperCase();
 
