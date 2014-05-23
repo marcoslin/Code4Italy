@@ -2,9 +2,9 @@
     <div class="pull-right">
         <div class="nav-container">
             <ul class="nav nav-pills">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#/Team">Team</a></li>
-                <li><a href="#/Contact">Contact</a></li>
+                <li ng-class="fs.home_class"><a href="#">Home</a></li>
+                <li ng-class="fs.team_class"><a href="#/team">Team</a></li>
+                <li ng-class="fs.contact_class"><a href="#/contact">Contact</a></li>
             </ul>
         </div>
         <p class="lead" ng-bind="navigationText"></p>

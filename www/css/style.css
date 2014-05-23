@@ -31,6 +31,17 @@
     padding-bottom: 10px;
 }
 
+@media (max-width:992px){
+    .logo-text {
+        width: 250px;
+    }
+}
+@media(max-width:767px){
+    .logo-text {
+        width: 150px;
+    }
+}
+
 .nav > li > a {
     color: darkgrey;
 }

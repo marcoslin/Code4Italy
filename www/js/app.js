@@ -13,6 +13,8 @@
             .when('/home', { templateUrl: "views/home.html", controller: "HomeController"} )
             .when('/deputato', { templateUrl: "views/deputato.html", controller: "DeputatoController"} )
             .when('/atto', { templateUrl: "views/atto.html", controller: "AttoController"} )
+            .when('/team', { templateUrl: "views/team.html", navTab: "team"} )
+            .when('/contact', { templateUrl: "views/contact.html", navTab: "contact"} )
 
 
             .when('/sparql', { templateUrl: "views/sparql.html", controller: "HomeController"} )
