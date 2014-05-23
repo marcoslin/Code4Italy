@@ -1,16 +1,13 @@
 (function () {
     var app = angular.module("c4iapp");
 
-    app.controller("DeputatoController", ["$scope", "$routeParams", "SPARQL", "CameraData", "$log", function ($scope, $routeParams, SPARQL, CameraData, $log) {
+    app.controller("DeputatoController", ["$scope", "$routeParams", "SPARQL", "CameraData", "navTextUpdater", "$log", function ($scope, $routeParams, SPARQL, CameraData, navTextUpdater, $log) {
         //DeputatoController
         var collegio = $routeParams.collegio,
             params = {
                 legislatura_uri: CameraData.legislatura_uri,
                 collegio: collegio
             };
-
-        $scope.collegio = collegio;
-        $log.log("collegio: ", collegio);
 
         SPARQL.getData("select_deputato", params).then(function (data) {
             var in_data = data.data.results.bindings,
@@ -64,6 +61,9 @@
             $log.log("Deputato: ", result);
             $log.log("X: ", x_values);
             $log.log("Y: ", y_values);
+
+            navTextUpdater.set(collegio);
+
         });
 
         // Layout
