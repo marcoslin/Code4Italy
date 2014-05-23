@@ -8,9 +8,11 @@
             controller: function ($scope) {
                 navTextUpdater.update(function (message) {
                     // This is called is involked from jquery.maphilight so apply is needed
-                    $scope.$apply(function () {
-                        $scope.navigationText = message;
-                    });
+                    $log.log("Update:", message);
+                    $scope.navigationText = message;
+                    if (!$scope.$$phase) {
+                        $scope.$apply();
+                    }
 
                 });
             }
