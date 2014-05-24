@@ -1,4 +1,37 @@
-/* Navigation */
+/*
+ * CORE SECTION
+ */
+body {
+    background: url("../img/background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+/* Override Bootstrap */
+.jumbotron {
+    margin-top: 15px;
+    background: rgba(255,255,255,0.6);
+    text-align: center;
+}
+
+/*
+ * NAVIGATION
+ */
+#nav-text {
+    padding-top: 5px;
+    font-weight: bold;
+}
+
+.lead {
+    color: #CAE0DD;
+}
+
+.nav > li > a {
+    color: #A19793;
+}
 
 .blue-gradient
 {
@@ -15,11 +48,6 @@
     padding-right: 50px;
 }
 
-#nav-text {
-    padding-top: 5px;
-    font-weight: bold;
-}
-
 .logo-container {
     padding-left: 20px;
     padding-right: 20px;
@@ -27,35 +55,50 @@
 }
 
 .logo-text {
-    width: 350px;
+    width: 400px;
     padding-bottom: 10px;
 }
-
+.logo-image {
+    width: 100px;
+    height: 100px;
+}
 @media (max-width:992px){
+    .logo-image {
+        width: 90px;
+        height: 90px;
+    }
     .logo-text {
-        width: 250px;
+        width: 300px;
     }
 }
 @media(max-width:767px){
     .logo-text {
-        width: 150px;
+        width: 180px;
+    }
+    .logo-image {
+        width: 70px;
+        height: 70px;
+    }
+    .nav-container {
+        padding-top: 5px;
+        padding-right: 30px;
     }
 }
 
-.nav > li > a {
-    color: darkgrey;
+@media(max-width:550px) {
+    .logo-text {
+        visibility:hidden;
+        width: 0;
+        height: 0;
+    }
+    .logo-container {
+        padding-left: 10px;
+    }
 }
 
-
-
-/* Override Bootstrap */
-.jumbotron {
-    margin-top: 15px;
-    background: rgba(255,255,255,0.6);
-    text-align: center;
-}
-
-/* Home */
+/*
+ * HOME
+ */
 .center-map {
     margin: 0 auto;
     width: 500px;
@@ -63,9 +106,28 @@
 }
 
 .cite {
-    color: gray;
+    color: #CAE0DD;
     float: right;
     margin: 10px;
+}
+
+/*
+ * TEAM
+ */
+h2.main-text {
+    color: #3D579E;
+}
+
+
+/*
+ * CONTACT
+ */
+h1.email-text {
+    color: #3D579E;
+}
+
+h1.email-sign {
+    color: #77432E;
 }
 
 /* === */
@@ -125,42 +187,3 @@ img.face-clip {
 }
 
 
-body
-{
-	background: url('../img/sfondo_mix.jpg') no-repeat;
-}
-
-
-
-
-
-.footer{
-	background: url('../img/footer.png') no-repeat;
-	width: 650px;
-	height: 30px;
-	color: #222;
-	border-radius: 15px;
-	text-align: center;
-	margin:0 auto;
-	font-size: 16px;
-}
-
-.footer a{
-	color: #FFF;
-	text-decoration: none;
-}
-.footer a:hover{
-	color: red;
-}
-
-/*Didascalia per immagine Wikipedia*/
-
-
-div.captionbox{float: left;margin: 10px;border: 1px solid #999}
-div.captionbox img{border:0;display:block}
-div.captionbox a{position: relative;float: left;color: #FFF;
-    text-decoration: none}
-div.captionbox span{position:absolute;bottom: 0;width: 100%;padding: 3px 0;
-    background: url(img/opacity.png) repeat-x 0 -100px;
-    cursor: pointer;text-align: center}
-div.captionbox a:hover span{background-position: 0 -200px}
