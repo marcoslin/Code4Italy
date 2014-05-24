@@ -1,5 +1,25 @@
-/* Navigation */
+/*
+ * CORE SECTION
+ */
+body {
+    background: url("../img/background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
+
+/* Override Bootstrap */
+.jumbotron {
+    margin-top: 15px;
+    background: rgba(255,255,255,0.6);
+    text-align: center;
+}
+
+/*
+ * NAVIGATION
+ */
 #nav-text {
     padding-top: 5px;
     font-weight: bold;
@@ -12,7 +32,6 @@
 .nav > li > a {
     color: #A19793;
 }
-
 
 .blue-gradient
 {
@@ -77,28 +96,9 @@
     }
 }
 
-
 /*
- * CORE SECTION
+ * HOME
  */
-
-body {
-    background: url("../img/background.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-
-/* Override Bootstrap */
-.jumbotron {
-    margin-top: 15px;
-    background: rgba(255,255,255,0.6);
-    text-align: center;
-}
-
-/* Home */
 .center-map {
     margin: 0 auto;
     width: 500px;
@@ -109,6 +109,25 @@ body {
     color: #CAE0DD;
     float: right;
     margin: 10px;
+}
+
+/*
+ * TEAM
+ */
+h2.main-text {
+    color: #3D579E;
+}
+
+
+/*
+ * CONTACT
+ */
+h1.email-text {
+    color: #3D579E;
+}
+
+h1.email-sign {
+    color: #77432E;
 }
 
 /* === */
