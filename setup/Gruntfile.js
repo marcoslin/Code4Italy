@@ -70,12 +70,6 @@ module.exports = function (grunt) {
 						cwd: "bower_components", expand: true, flatten: true,
 						dest: "<%= cvars.www %>/js/ext/",
 						src: getJSFiles()
-					},
-					// Javascript with non standard name
-					{
-						cwd: "bower_components", expand: true, flatten: true,
-						dest: "<%= cvars.www %>/js/ext/",
-						src: ['d3-grid/d3-grid.js']
 					}
 				]
 			}
