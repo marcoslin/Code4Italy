@@ -147,9 +147,13 @@ h1.email-sign {
 }
 
 .bio-container > h5 {
-    color: #A19793;
+    color: #7D7572;
     font-weight: normal;
     margin-top: 0px;
+}
+
+.bio-container > img {
+    border-radius: 10px;
 }
 
 .table-container {
@@ -188,17 +192,3 @@ h1.email-sign {
     text-align: left;
     padding: 0;
 }
-
-/* === */
-
-.face-container {
-    width: 100px;
-    height: 100px;
-}
-
-img.face-clip {
-    width: 100px;
-    height: 100px;
-    border-radius: 100px;
-}
-
