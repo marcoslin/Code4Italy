@@ -39,13 +39,10 @@ module.exports = function (grunt) {
 		var file_list = [
 			"angular/angular" + file_ext,
 			"angular-route/angular-route" + file_ext,
-            "angular-sanitize/angular-sanitize" + file_ext,
             "angular-ui-bootstrap-bower/ui-bootstrap-tpls" + file_ext,
             "angular-ui-bootstrap-bower/ui-bootstrap" + file_ext,
             "jquery/dist/jquery" + file_ext,
-            "maphilight/jquery.maphilight" + file_ext,
-            "angular-foundation/mm-foundation" + file_ext,
-            "angular-foundation/mm-foundation-tpls" + file_ext
+            "maphilight/jquery.maphilight" + file_ext
 		];
 		
 		return file_list;
