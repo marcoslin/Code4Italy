@@ -14,10 +14,10 @@
             //var dataNascita = $filter('birthDate')(new Date(input), 'dd/MM/yyyy');
             var year = input.substr(0,4),
                 month = input.substr(4,2),
-                day = input.substr(6,2),
-                bdate = new Date(year,month,day);
+                day = input.substr(6,2);
+                //bdate = new Date(year,month,day);
 
-            return bdate.getDate() + "/" + bdate.getMonth()  + "/" + bdate.getYear();
+            return day + "/" + month  + "/" + year;
 
         };
     }]);
