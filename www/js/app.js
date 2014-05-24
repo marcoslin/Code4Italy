@@ -1,6 +1,6 @@
 (function () {
 
-    var app = angular.module("c4iapp", ['ngRoute']);
+    var app = angular.module("c4iapp", ['ngRoute','ui.bootstrap']);
 
     // Define application wide basic constants
     app.constant("CameraData", {
