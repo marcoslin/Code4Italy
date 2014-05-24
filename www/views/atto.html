@@ -35,14 +35,25 @@
                     </tr>
                 </table>
 
-                <div ng-show="deputato_full.twitter.value">
-                    Twitter : <a href="{{deputato_full.twitter.value}}">LINK</a>
+                <div ng-show="deputato_full.twitter.value" style="display: inline-block;">
+                    <script type="text/javascript">
+                    	var url = "http://twitter.com/ AngieCalabria";
+                    	document.getElementById("directTwitter").href += url.replace("http://twitter.com/","").replace(" ","");
+                    </script>
+                    
+                    <a href="https://twitter.com/intent/tweet?screen_name=" id="directTwitter" target="_blank">
+                        <i class="fa fa-twitter-square fa-4x"></i>
+                    </a>
                 </div>
-                <div ng-show="deputato_full.facebook.value">
-                    Facebook: <a href="{{deputato_full.facebook.value}}">LINK</a>
+                <div ng-show="deputato_full.facebook.value" style="display: inline-block;">
+                   <a href="{{deputato_full.facebook.value}}" target="_blank">
+                       <i class="fa fa-facebook-square fa-4x"></i>
+                   </a>
                 </div>
-                <div ng-show="deputato_full.youtube.value">
-                    YouTube: <a href="{{deputato_full.youtube.value}}">LINK</a>
+                <div ng-show="deputato_full.youtube.value" style="display: inline-block;">
+                    <a href="{{deputato_full.youtube.value}}" target="_blank">
+                        <i class="fa fa-youtube-play fa-4x"></i>
+                    </a>
                 </div>
             </div>
 
