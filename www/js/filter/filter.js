@@ -1,7 +1,9 @@
 (function () {
     var app = angular.module('c4iapp');
 
-    //parsing data nascita, pattern="dd/MM/yyyy"
+    /**
+     * Format YYYYMMDD date into DD/MM/YY
+     */
     app.filter('birthDate', ["$filter", "$log", function($filter, $log) {
         return function (input) {
             // Make sure a YYYYMMDD is passed
@@ -20,7 +22,9 @@
         };
     }]);
 
-    //parsing sesso(ita)
+    /**
+     * Translate english gender into Italian
+     */
     app.filter('gender', ["$filter", "$log", function($filter, $log) {
         return function(input) {
             if (typeof input === "undefined") {
@@ -36,6 +40,9 @@
         };
     }]);
 
+    /**
+     * Truncate the long string and append "..." to the end
+     */
     app.filter('ellipsis', ["$filter", "$log", function ($log) {
         var maxLength = 100;
 
@@ -53,5 +60,26 @@
         };
     }]);
 
+    /**
+     * Generate Twitter Intent URL with user name
+     */
+    app.filter('twitterIntent', ["$filter", "$log", function ($log) {
+        var url = "https://twitter.com/intent/tweet?screen_name=",
+            tw_regex = /\/(\w+)$/;
+
+        return function(input) {
+            if (typeof input === "undefined") {
+                return undefined;
+            } else {
+                var m = tw_regex.exec(input);
+
+                if (m[1]) {
+                    return url + m[1];
+                } else {
+                    return undefined;
+                }
+            }
+        };
+    }]);
 
 })();

@@ -192,3 +192,12 @@ h1.email-sign {
     text-align: left;
     padding: 0;
 }
+
+.social-container {
+    padding-bottom: 20px;
+}
+
+.social-container > div {
+    display: inline-block;
+
+}
