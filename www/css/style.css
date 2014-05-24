@@ -135,11 +135,11 @@ h1.email-sign {
  */
 .bio-container,
 .table-container {
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-.bio-container {
-    padding-top: 20px;
+    padding-top: 10px;
+    margin: 5px -10px 10px -10px;
+    border-radius: 10px;
+    background-color: rgba(202, 224, 221, 0.3);
+    border: 1px dotted #A19793;
 }
 
 .bio-container > h4 {
