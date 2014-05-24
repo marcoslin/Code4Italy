@@ -3,7 +3,6 @@
 
     app.directive('setNavText', ["navTextUpdater", "$log", function (navTextUpdater, $log) {
         return {
-            scope: {},
             restrict: 'A',
             link: function (scope, elm, attr) {
                 var message = attr.alt;
