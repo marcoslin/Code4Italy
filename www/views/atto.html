@@ -181,7 +181,6 @@ SELECT DISTINCT
     ?name ?description ?dataNascita ?luogoNascita ?img ?gender ?gruppo_label ?twitter ?facebook ?youtube
 WHERE {
     <{{deputato}}> a ocd:deputato;
-        dc:description ?description;
         foaf:depiction ?img;
         ocd:rif_leg <{{legislatura_uri}}>;
         ocd:rif_mandatoCamera ?mandato;
@@ -191,6 +190,10 @@ WHERE {
         a foaf:Person;
         dc:title ?name;
         foaf:gender ?gender
+
+    OPTIONAL {
+        <{{deputato}}> dc:description ?description
+    }
 
     OPTIONAL{
         ?persona bio:Birth ?nascita .
