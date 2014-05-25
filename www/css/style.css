@@ -158,14 +158,41 @@ h2.main-text {
 /*
  * CONTACT
  */
-h1.email-text {
+table.table-contact > tbody > tr > td {
+    vertical-align: middle;
+}
+
+table.table-contact > tbody > tr > td > a {
     color: #3D579E;
+    text-decoration: none;
 }
 
-h1.email-sign {
-    color: #77432E;
+.contact-logo {
+    text-align: right;
+    font-size: 20px;
+}
+.contact-text {
+    text-align: left;
+    font-size: 28px;
 }
 
+@media (max-width:992px){
+    .contact-logo {
+        font-size: 16px;
+    }
+    .contact-text {
+        font-size: 20px;
+    }
+}
+
+@media(max-width:550px) {
+    .contact-logo {
+        font-size: 12px;
+    }
+    .contact-text {
+        font-size: 12px;
+    }
+}
 
 /*
  * ATTO
