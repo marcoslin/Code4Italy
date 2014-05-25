@@ -113,9 +113,35 @@ body {
 /*
  * TEAM
  */
-h2.main-text {
+h2.main-text,
+.contact-container > .row > .col-md-2 > a {
     color: #3D579E;
 }
+
+h2.main-text {
+    margin-top: 0px;
+}
+
+.contact-container {
+    margin-top: 20px;
+}
+
+.contact-container > .row > .col-md-3 {
+    padding: 7px;
+}
+
+.contact-container > .row > .col-md-3 > a {
+    text-decoration: none;
+}
+
+.contact-container > .row > .col-md-3 > a > .label {
+    font-size: 14px;
+}
+
+.contact-container > .row > .col-md-3 > a > .label-link:hover {
+    background-color: #428bca;
+}
+
 
 
 /*
