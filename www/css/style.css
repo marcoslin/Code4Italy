@@ -124,6 +124,19 @@ body {
     background-color: rgba(255, 255, 255, 0.6);
 }
 
+.help-container {
+    position: absolute;
+    right: 10px;
+    padding-top: 2px;
+    padding-right: 5px;
+}
+.help-container > a {
+    color: #A19793;
+}
+.help-container > a:hover {
+    color: #3d579e;
+}
+
 .cite {
     color: #CAE0DD;
     margin: 10px;
@@ -170,6 +183,7 @@ table.table-contact > tbody > tr > td {
     vertical-align: middle;
 }
 
+table.table-contact > tbody > tr > td,
 table.table-contact > tbody > tr > td > a {
     color: #3D579E;
     text-decoration: none;
@@ -200,6 +214,13 @@ table.table-contact > tbody > tr > td > a {
     .contact-text {
         font-size: 14px;
     }
+}
+
+/*
+ * Deputato
+ */
+.face-container {
+    display: inline;
 }
 
 /*
