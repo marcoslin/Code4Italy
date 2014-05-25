@@ -98,7 +98,7 @@
                     <caption>Leggi <span class="badge">{{leggi_result.length}}</span></caption>
                     <tr ng-repeat="row in leggi_result">
                         <td>
-                            <a ng-href="{{row.lex.value}}" target="_blank">{{row.nomeAtto.value | ellipsis}}</a>
+                            <a ng-href="{{row.lex.value || row.legge.value}}" target="_blank">{{row.nomeAtto.value | ellipsis}}</a>
                         </td>
                     </tr>
                 </table>
@@ -156,7 +156,24 @@ WHERE {
 </script>
 
 <script  id="select_legge" type="text/ng-template">
-SELECT DISTINCT * WHERE { ?atto a ocd:atto . { { ?atto ocd:primo_firmatario <{{deputato}}> } UNION { ?atto ocd:altro_firmatario <{{deputato}}> } <{{deputato}}> a ocd:deputato } ?atto dc:title ?nomeAtto . ?atto dc:description ?descrizioneAtto . ?legge a ocd:legge; ocd:lex ?lex; ocd:rif_leg <{{legislatura_uri}}> . ?legge ocd:lavoriPreparatori [?lavoro ?atto] } 
+SELECT DISTINCT *
+WHERE {
+    ?atto a ocd:atto .
+    {
+        { ?atto ocd:primo_firmatario <{{deputato}}> }
+        UNION
+        { ?atto ocd:altro_firmatario <{{deputato}}> }
+        <{{deputato}}> a ocd:deputato
+    }
+    ?atto dc:title ?nomeAtto .
+    ?atto dc:description ?descrizioneAtto .
+    ?legge a ocd:legge;
+        ocd:rif_leg <{{legislatura_uri}}>;
+        ocd:lavoriPreparatori [?lavoro ?atto] .
+    OPTIONAL {
+        ?legge ocd:lex ?lex
+    }
+}
 </script>
 
 <script  id="select_bio" type="text/ng-template">
