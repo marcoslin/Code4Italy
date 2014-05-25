@@ -76,7 +76,7 @@
                     <caption>Atti di indirizzo e controllo <span class="badge">{{aic_count}}</span></caption>
                     <tr ng-repeat="row in aic_result">
                         <td>
-                            <a ng-href="{{row.aic.value}}">{{row.aic.value | ellipsis}}</a>
+                            <a ng-href="{{row.aic.value}}">{{row.title.value | ellipsis}}</a>
                         </td>
                     </tr>
                 </table>
@@ -101,7 +101,7 @@
                     <caption>Leggi <span class="badge">{{leggi_result.length}}</span></caption>
                     <tr ng-repeat="row in leggi_result">
                         <td>
-                            <a ng-href="{{row.legge.value}}">{{row.legge.value | ellipsis}}</a>
+                            <a ng-href="{{row.legge.value}}">{{row.nomeAtto.value | ellipsis}}</a>
                         </td>
                     </tr>
                 </table>
