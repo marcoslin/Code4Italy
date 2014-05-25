@@ -23,7 +23,7 @@
         SPARQL.getData("select_aic", params).then(function (data) {
             $scope.aic_result = data.data.results.bindings;
             $scope.aic_count = $scope.aic_result.length;
-            // $log.log("Aic: ", $scope.aic_result);
+             //$log.log("Aic: ", $scope.aic_result);
         });
 
         // Get intervento
@@ -36,7 +36,7 @@
         // Get Legge
         SPARQL.getData("select_legge", params).then(function (data) {
             $scope.leggi_result = data.data.results.bindings;
-            // $log.log("Leggi: ", $scope.leggi_result);
+             //$log.log("Leggi: ", $scope.leggi_result);
         });
 
         // Get deputato

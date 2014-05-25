@@ -73,7 +73,7 @@
                     <caption>Atti di indirizzo e controllo <span class="badge">{{aic_count}}</span></caption>
                     <tr ng-repeat="row in aic_result">
                         <td>
-                            <a ng-href="{{row.aic.value}}">{{row.aic.value | ellipsis}}</a>
+                            <a ng-href="{{row.aic.value}}">{{row.title.value | ellipsis}}</a>
                         </td>
                     </tr>
                 </table>
@@ -98,7 +98,7 @@
                     <caption>Leggi <span class="badge">{{leggi_result.length}}</span></caption>
                     <tr ng-repeat="row in leggi_result">
                         <td>
-                            <a ng-href="{{row.legge.value}}">{{row.legge.value | ellipsis}}</a>
+                            <a ng-href="{{row.lex.value}}" target="_blank">{{row.nomeAtto.value | ellipsis}}</a>
                         </td>
                     </tr>
                 </table>
@@ -156,24 +156,7 @@ WHERE {
 </script>
 
 <script  id="select_legge" type="text/ng-template">
-SELECT DISTINCT *
-WHERE {
-    ?atto a ocd:atto .
-    {
-        {
-            ?atto ocd:primo_firmatario <{{deputato}}>
-        }
-        UNION
-        {
-            ?atto ocd:altro_firmatario <{{deputato}}>
-        }
-        <{{deputato}}> a ocd:deputato
-    }
-    ?atto dc:title ?nomeAtto .
-    ?atto dc:description ?descrizioneAtto .
-    ?legge a ocd:legge; ocd:rif_leg <{{legislatura_uri}}> .
-    ?legge ocd:lavoriPreparatori [?lavoro ?atto]
-}
+SELECT DISTINCT * WHERE { ?atto a ocd:atto . { { ?atto ocd:primo_firmatario <{{deputato}}> } UNION { ?atto ocd:altro_firmatario <{{deputato}}> } <{{deputato}}> a ocd:deputato } ?atto dc:title ?nomeAtto . ?atto dc:description ?descrizioneAtto . ?legge a ocd:legge; ocd:lex ?lex; ocd:rif_leg <{{legislatura_uri}}> . ?legge ocd:lavoriPreparatori [?lavoro ?atto] } 
 </script>
 
 <script  id="select_bio" type="text/ng-template">
