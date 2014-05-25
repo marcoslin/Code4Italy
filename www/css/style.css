@@ -42,15 +42,18 @@ body {
     background: linear-gradient(#3d579e, #89c4f4); /* Standard syntax */
 }
 
+.beta-label {
+    float: right;
+}
+
 .nav-container {
     padding-top: 10px;
-    padding-right: 50px;
+    padding-right: 5px;
 }
 
 .logo-container {
     padding-left: 20px;
     padding-right: 20px;
-    padding-left: 20px;
 }
 
 .logo-text {
@@ -67,7 +70,7 @@ body {
         height: 90px;
     }
     .logo-text {
-        width: 300px;
+        width: 280px;
     }
 }
 @media(max-width:767px){
@@ -84,7 +87,7 @@ body {
     }
 }
 
-@media(max-width:550px) {
+@media(max-width:640px) {
     .logo-text {
         visibility:hidden;
         width: 0;
@@ -105,18 +108,23 @@ body {
     border: 1px dotted #A19793;
 }
 
-.map-size,
-.center-map {
-    width: 500px;
-    height: 574px;
-}
-
 .center-map {
     margin: 0px;
+    width: 500px;
+    height: 600px;
+}
+
+.welcome-text {
+    font-size: 16px !important;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.welcome-text:hover {
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 .cite {
-    float: left;
     color: #CAE0DD;
     margin: 10px;
 }
@@ -185,12 +193,12 @@ table.table-contact > tbody > tr > td > a {
     }
 }
 
-@media(max-width:550px) {
+@media(max-width:580px) {
     .contact-logo {
         font-size: 12px;
     }
     .contact-text {
-        font-size: 12px;
+        font-size: 14px;
     }
 }
 
