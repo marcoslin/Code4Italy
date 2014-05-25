@@ -58,9 +58,9 @@
 
         <!-- Column 2 -->
         <div class="col-md-4">
-            <div class="row table-container">
+            <div class="row table-container table-fixed-size">
                 <table class="table table-hover">
-                    <caption>Atto <span class="badge">{{atto_count}}</span></caption>
+                    <caption>Atti <span class="badge">{{atto_count}}</span></caption>
                     <tr ng-repeat="row in atto_result">
                         <td>
                             <a ng-href="{{row.atto.value}}">{{row.nomeAtto.value | ellipsis}}</a>
@@ -68,12 +68,12 @@
                     </tr>
                 </table>
             </div>
-            <div class="row table-container">
+            <div class="row table-container table-fixed-size">
                 <table class="table table-hover">
                     <caption>Atti di indirizzo e controllo <span class="badge">{{aic_count}}</span></caption>
                     <tr ng-repeat="row in aic_result">
                         <td>
-                            <a ng-href="{{row.aic.value}}">{{row.aic.value | ellipsis}}</a>
+                            <a ng-href="{{row.aic.value}}">{{row.title.value | ellipsis}}</a>
                         </td>
                     </tr>
                 </table>
@@ -82,7 +82,7 @@
 
         <!-- Column 3 -->
         <div class="col-md-4">
-            <div class="row table-container">
+            <div class="row table-container table-fixed-size">
                 <table class="table table-hover">
                     <caption>Interventi <span class="badge">{{intervento_count}}</span></caption>
                     <tr ng-repeat="row in intervento_result">
@@ -93,12 +93,12 @@
                 </table>
             </div>
 
-            <div class="row table-container">
+            <div class="row table-container table-fixed-size">
                 <table class="table table-hover">
                     <caption>Leggi <span class="badge">{{leggi_result.length}}</span></caption>
                     <tr ng-repeat="row in leggi_result">
                         <td>
-                            <a ng-href="{{row.legge.value}}">{{row.legge.value | ellipsis}}</a>
+                            <a ng-href="{{row.lex.value || row.legge.value}}" target="_blank">{{row.nomeAtto.value | ellipsis}}</a>
                         </td>
                     </tr>
                 </table>
@@ -160,19 +160,19 @@ SELECT DISTINCT *
 WHERE {
     ?atto a ocd:atto .
     {
-        {
-            ?atto ocd:primo_firmatario <{{deputato}}>
-        }
+        { ?atto ocd:primo_firmatario <{{deputato}}> }
         UNION
-        {
-            ?atto ocd:altro_firmatario <{{deputato}}>
-        }
+        { ?atto ocd:altro_firmatario <{{deputato}}> }
         <{{deputato}}> a ocd:deputato
     }
     ?atto dc:title ?nomeAtto .
     ?atto dc:description ?descrizioneAtto .
-    ?legge a ocd:legge; ocd:rif_leg <{{legislatura_uri}}> .
-    ?legge ocd:lavoriPreparatori [?lavoro ?atto]
+    ?legge a ocd:legge;
+        ocd:rif_leg <{{legislatura_uri}}>;
+        ocd:lavoriPreparatori [?lavoro ?atto] .
+    OPTIONAL {
+        ?legge ocd:lex ?lex
+    }
 }
 </script>
 

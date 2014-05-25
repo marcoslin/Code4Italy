@@ -42,15 +42,18 @@ body {
     background: linear-gradient(#3d579e, #89c4f4); /* Standard syntax */
 }
 
+.beta-label {
+    float: right;
+}
+
 .nav-container {
     padding-top: 10px;
-    padding-right: 50px;
+    padding-right: 5px;
 }
 
 .logo-container {
     padding-left: 20px;
     padding-right: 20px;
-    padding-left: 20px;
 }
 
 .logo-text {
@@ -67,7 +70,7 @@ body {
         height: 90px;
     }
     .logo-text {
-        width: 300px;
+        width: 280px;
     }
 }
 @media(max-width:767px){
@@ -84,7 +87,7 @@ body {
     }
 }
 
-@media(max-width:550px) {
+@media(max-width:640px) {
     .logo-text {
         visibility:hidden;
         width: 0;
@@ -98,37 +101,106 @@ body {
 /*
  * HOME
  */
+.message-container {
+    margin: 5px -10px 10px -10px;
+    border-radius: 10px;
+    background-color: rgba(202, 224, 221, 0.3);
+    border: 1px dotted #A19793;
+}
+
 .center-map {
-    margin: 0 auto;
+    margin: 0px;
     width: 500px;
-    height: 574px;
+    height: 600px;
+}
+
+.welcome-text {
+    font-size: 16px !important;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.welcome-text:hover {
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 .cite {
     color: #CAE0DD;
-    float: right;
     margin: 10px;
 }
 
 /*
  * TEAM
  */
-h2.main-text {
+h2.main-text,
+.contact-container > .row > .col-md-2 > a {
     color: #3D579E;
 }
+
+h2.main-text {
+    margin-top: 0px;
+}
+
+.contact-container {
+    margin-top: 20px;
+}
+
+.contact-container > .row > .col-md-3 {
+    padding: 7px;
+}
+
+.contact-container > .row > .col-md-3 > a {
+    text-decoration: none;
+}
+
+.contact-container > .row > .col-md-3 > a > .label {
+    font-size: 14px;
+}
+
+.contact-container > .row > .col-md-3 > a > .label-link:hover {
+    background-color: #428bca;
+}
+
 
 
 /*
  * CONTACT
  */
-h1.email-text {
+table.table-contact > tbody > tr > td {
+    vertical-align: middle;
+}
+
+table.table-contact > tbody > tr > td > a {
     color: #3D579E;
+    text-decoration: none;
 }
 
-h1.email-sign {
-    color: #77432E;
+.contact-logo {
+    text-align: right;
+    font-size: 20px;
+}
+.contact-text {
+    text-align: left;
+    font-size: 28px;
 }
 
+@media (max-width:992px){
+    .contact-logo {
+        font-size: 16px;
+    }
+    .contact-text {
+        font-size: 20px;
+    }
+}
+
+@media(max-width:580px) {
+    .contact-logo {
+        font-size: 12px;
+    }
+    .contact-text {
+        font-size: 14px;
+    }
+}
 
 /*
  * ATTO
@@ -156,8 +228,11 @@ h1.email-sign {
     border-radius: 10px;
 }
 
-.table-container {
+.table-fixed-size {
     height: 320px;
+}
+
+.table-container {
     overflow: hidden;
     padding: 10px;
 }
