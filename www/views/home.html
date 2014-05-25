@@ -1,16 +1,39 @@
 <nav-menu></nav-menu>
 
 <div class="jumbotron">
-    <div>
-        <img class="mapper" src="img/mappa_italia.png" border="0" usemap="#mappa_italia" alt="Mappa Italia"/>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="map-size">
+                <img class="mapper" src="img/mappa_italia.png" border="0" usemap="#mappa_italia" alt="Mappa Italia"/>
+                <a class="cite" href="http://it.wikipedia.org/wiki/File:Circ_elett.png">
+                    <span>Fonte: Wikipedia Licenza CC 3.0</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4 ">
+            <div class="row message-container">
+                <h2>Welcome</h2>
+                <p class="lead">
+                    Click on the region interested to get a list of deputato.
+                </p>
+            </div>
+            <div class="row table-container">
+                <table class="table table-hover">
+                    <caption>Other Regions</caption>
+                    <tr ng-repeat="(key, region) in otherRegions">
+                        <td>
+                            <a href="" ng-click="goToCollegio(key)">{{region}}</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
-    <a class="cite" href="http://it.wikipedia.org/wiki/File:Circ_elett.png">
-        <span>Fonte: Wikipedia Licenza CC 3.0</span>
-    </a>
+
 </div>
 
 <map name="mappa_italia">
-    <area shape="poly" ng-click="goToCollegio('TRENTINO-ALTO ADIGE')" alt="Trentino-Alto Adige" set-nav-text tooltip="{{result['TRENTINO-ALTO ADIGE']}}"
+    <area shape="poly" ng-click="goToCollegio('TRENTINO-ALTO ADIGE')" alt="Trentino-Alto Adige" set-nav-text
           coords="150,16,146,24,147,30,152,30,151,35,151,37,156,39,156,43,152,44,154,51,153,61,151,63,152,70,155,76,165,73,167,74,168,76,169,79,176,78,179,74,183,66,187,63,190,62,193,62,197,63,197,56,206,54,208,50,204,47,200,43,204,37,200,34,208,31,212,24,217,27,224,26,225,24,221,17,220,13,213,9,213,6,217,3,215,0,207,4,202,7,198,9,191,6,186,9,181,8,174,11,173,17,171,20,167,20,162,18,159,14,150,16"/>
 
     <area shape="poly" ng-click="goToCollegio('FRIULI-VENEZIA GIULIA')" alt="Friuli-Venezia Giulia" set-nav-text

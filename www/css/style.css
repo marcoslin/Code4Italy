@@ -98,15 +98,26 @@ body {
 /*
  * HOME
  */
+.message-container {
+    margin: 5px -10px 10px -10px;
+    border-radius: 10px;
+    background-color: rgba(202, 224, 221, 0.3);
+    border: 1px dotted #A19793;
+}
+
+.map-size,
 .center-map {
-    margin: 0 auto;
     width: 500px;
     height: 574px;
 }
 
+.center-map {
+    margin: 0px;
+}
+
 .cite {
+    float: left;
     color: #CAE0DD;
-    float: right;
     margin: 10px;
 }
 
@@ -182,8 +193,11 @@ h1.email-sign {
     border-radius: 10px;
 }
 
-.table-container {
+.table-fixed-size {
     height: 320px;
+}
+
+.table-container {
     overflow: hidden;
     padding: 10px;
 }
