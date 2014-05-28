@@ -11,6 +11,14 @@ Code4Italy/master/    <- Clone of github `master` branch
 Code4Italy/gh-pages/  <- Clone of the github `gh-pages` branch
 ```
 
+Command to create directories:
+```
+mkdir Code4Italy
+cd Code4Italy
+git clone git@github.com:marcoslin/Code4Italy.git master
+git -b gh-pages --single-branch git@github.com:marcoslin/Code4Italy.git gh-pages
+```
+
 
 ## Prerequisites
 1. You must have [node.js](http://nodejs.org/) installed in order to use this setup.
