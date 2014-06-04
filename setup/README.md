@@ -16,7 +16,7 @@ Command to create directories:
 mkdir Code4Italy
 cd Code4Italy
 git clone git@github.com:marcoslin/Code4Italy.git master
-git -b gh-pages --single-branch git@github.com:marcoslin/Code4Italy.git gh-pages
+git clone -b gh-pages --single-branch git@github.com:marcoslin/Code4Italy.git gh-pages
 ```
 
 
