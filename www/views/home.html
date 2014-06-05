@@ -17,6 +17,7 @@
                         <input type="text"
                                class="form-control"
                                ng-model="selected_deputato"
+                               placeholder="Cerca Deputato"
                                typeahead="deputato as deputato.desc for deputato in deputato_list | filter:$viewValue | limitTo: 12" >
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="submit">
