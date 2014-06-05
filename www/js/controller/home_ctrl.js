@@ -28,6 +28,29 @@
         });
         */
 
+        SPARQL.getData("select_deputato", CameraData).then(function (data) {
+
+            var in_data = data.data.results.bindings,
+                in_data_len = in_data.length,
+                result = []
+                ;
+
+            for (var i=0; i<in_data_len; i += 1) {
+                var row = in_data[i],
+                    result_row = {
+                        "id": row.deputato.value,
+                        "desc": row.name.value + ', ' + row.partito.value + ', ' + row.collegio.value
+                    };
+                result.push(result_row);
+            }
+
+            $scope.deputato_list = result;
+            $log.log("Loaded " + in_data_len + " deputato");
+
+        });
+
+
+
         $scope.goToCollegio = function (collegio) {
             $log.log("goToCollegio: ", collegio);
             $location.path("deputato").search("collegio", collegio);
@@ -39,6 +62,13 @@
             "AFRICA, ASIA, OCEANIA E ANTARTIDE": "Africa, Asia, Oceania e Antartide",
             "AMERICA SETTENTRIONALE E CENTRALE": "America Settentrionale e Centrale"
         };
+
+        $scope.deputatoSearch = function () {
+            // $log.log("Selected: ", $scope.selected_deputato);
+            $location.path("atto").search("deputato", $scope.selected_deputato.id);
+        }
+
+
 
         // Initialize mapper.js
         $('.mapper').maphilight().parent().addClass("center-map");
