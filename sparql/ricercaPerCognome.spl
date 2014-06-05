@@ -1,0 +1,13 @@
+##ricerca per cognome
+SELECT DISTINCT * 
+WHERE {
+  ?deputato a ocd:deputato; 
+    foaf:firstName ?nome; 
+    foaf:surname ?cognome;       
+    ocd:rif_leg <http://dati.camera.it/ocd/legislatura.rdf/repubblica_17>; 
+    ocd:rif_mandatoCamera ?mandato.
+      FILTER regex(?cognome, "Rossi", "i").
+  FILTER NOT EXISTS {
+    ?mandato ocd:endDate ?date
+  } .  
+} ORDER BY ?cognome ?nome

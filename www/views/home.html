@@ -12,6 +12,23 @@
         </div>
         <div class="col-md-4 ">
             <div class="row message-container">
+                <form ng-submit="deputatoSearch()">
+                    <div class="input-group">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="selected_deputato"
+                               placeholder="Cerca Deputato"
+                               typeahead="deputato as deputato.desc for deputato in deputato_list | filter:$viewValue | limitTo: 12" >
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+
+            <div class="row message-container">
                 <div class="help-container">
                     <a href="./help.pdf" target="_blank">
                         <i class="fa fa-question-circle fa-3x"></i>
@@ -29,7 +46,7 @@
             </div>
             <div class="row table-container">
                 <table class="table table-hover">
-                    <caption>Other Regions</caption>
+                    <caption>Circoscrizioni Estere</caption>
                     <tr ng-repeat="(key, region) in otherRegions">
                         <td>
                             <a href="" ng-click="goToCollegio(key)">{{region}}</a>
@@ -143,4 +160,33 @@
     }
     GROUP BY
         ?collegio
+</script>
+
+<script id="select_deputato" type="text/ng-template">
+    SELECT
+        distinct ?deputato ?name ?partito ?collegio
+    WHERE {
+        ?deputato a ocd:deputato;
+            ocd:rif_leg <{{legislatura_uri}}>;
+            ocd:rif_mandatoCamera ?mandato;
+            ocd:aderisce ?aderisce .
+
+        ?persona ocd:rif_mandatoCamera ?mandato;
+            a foaf:Person;
+            dc:title ?name;
+            foaf:gender ?gender .
+
+        ?aderisce ocd:rif_gruppoParlamentare ?gruppo .
+        ?gruppo <http://purl.org/dc/terms/alternative> ?partito .
+
+        ?mandato ocd:rif_elezione ?elezione .
+        ?elezione dc:coverage ?collegio .
+
+        FILTER NOT EXISTS{
+            ?mandato ocd:endDate ?date
+        }
+        MINUS{
+            ?aderisce ocd:endDate ?fineAdesione
+        }
+    }
 </script>

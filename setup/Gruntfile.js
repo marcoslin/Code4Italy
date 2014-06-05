@@ -65,6 +65,12 @@ module.exports = function (grunt) {
                         dest: "<%= cvars.www %>/css/ext/",
                         src: getCSSFiles()
                     },
+                    // Font used by CSS
+                    {
+                        cwd: "bower_components/bootstrap/dist/fonts/", expand: true, flatten: true,
+                        dest: "<%= cvars.www %>/css/fonts/",
+                        src: ["glyphicons*"]
+                    },
 					// Javascript with standard .min.js naming convention
 					{
 						cwd: "bower_components", expand: true, flatten: true,
