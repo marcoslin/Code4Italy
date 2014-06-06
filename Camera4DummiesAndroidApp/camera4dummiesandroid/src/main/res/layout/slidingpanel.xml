@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            android:paddingTop="?android:attr/actionBarSize">
+            android:paddingTop="0dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
