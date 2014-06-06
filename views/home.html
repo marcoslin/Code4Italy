@@ -17,6 +17,7 @@
                         <input type="text"
                                class="form-control"
                                ng-model="selected_deputato"
+                               placeholder="Cerca Deputato"
                                typeahead="deputato as deputato.desc for deputato in deputato_list | filter:$viewValue | limitTo: 12" >
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="submit">
@@ -45,7 +46,7 @@
             </div>
             <div class="row table-container">
                 <table class="table table-hover">
-                    <caption>Other Regions</caption>
+                    <caption>Circoscrizioni Estere</caption>
                     <tr ng-repeat="(key, region) in otherRegions">
                         <td>
                             <a href="" ng-click="goToCollegio(key)">{{region}}</a>
