@@ -42,13 +42,16 @@ body {
     background: linear-gradient(#3d579e, #89c4f4); /* Standard syntax */
 }
 
-.beta-label {
-    float: right;
-}
-
 .nav-container {
     padding-top: 10px;
     padding-right: 5px;
+}
+
+.nav-responsive {
+    font-size: 14px;
+}
+.nav-responsive > li > a {
+    padding: 10px 15px;
 }
 
 .logo-container {
@@ -83,7 +86,13 @@ body {
     }
     .nav-container {
         padding-top: 5px;
-        padding-right: 30px;
+        padding-right: 20px;
+    }
+    .nav-responsive {
+        font-size: 12px;
+    }
+    .nav-responsive > li > a {
+        padding: 8px 12px;
     }
 }
 
@@ -93,8 +102,19 @@ body {
         width: 0;
         height: 0;
     }
+    .logo-image {
+        width: 60px;
+        height: 60px;
+    }
+    .nav-container {
+        padding-top: 3px;
+        padding-right: 10px;
+    }
     .logo-container {
         padding-left: 10px;
+    }
+    .nav-responsive > li > a {
+        padding: 5px 8px;
     }
 }
 
