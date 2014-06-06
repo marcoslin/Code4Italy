@@ -5,8 +5,7 @@
         return {
             restrict: 'E',
             scope: {
-                width: "@",
-                height: "@",
+                class: "@",
                 src: "@"
             },
             templateUrl: 'js/directive/template/circleImage.svg'

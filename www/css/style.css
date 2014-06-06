@@ -243,6 +243,30 @@ table.table-contact > tbody > tr > td > a {
     display: inline;
 }
 
+.circle-image {
+    width: 80px;
+    height: 80px;
+}
+
+@media (max-width:992px){
+    .circle-image {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+@media(max-width:640px) {
+    .circle-image {
+        width: 50px;
+        height: 50px;
+    }
+}
+@media(max-width:580px) {
+    .circle-image {
+        width: 30px;
+        height: 30px;
+    }
+}
 /*
  * ATTO
  */

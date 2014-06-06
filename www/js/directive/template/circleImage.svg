@@ -1,4 +1,4 @@
-<svg width="{{width}}" height="{{height}}" x="0px" y="0px" viewBox="0 0 164 164"
+<svg class="{{class}}" x="0px" y="0px" viewBox="0 0 164 164"
      xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
