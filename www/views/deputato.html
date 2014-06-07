@@ -1,18 +1,16 @@
 <nav-menu></nav-menu>
 
 <div class="jumbotron">
-    <table class="table table-hover table-condensed table-bordered table-responsive" cellpadding="1" width="100%">
-        <tr>
-            <td ng-repeat="(itemX, count) in xValues">
-                <p style="font-size:20px;"><b>{{itemX}}</b></p>
-            </td>
-        </tr>
-        <tr ng-repeat="(itemY, count) in yValues">
-            <td ng-repeat="(itemX, count) in xValues">
+    <table class="table table-hover table-condensed table-bordered table-responsive" width="100%">
+        <tr ng-repeat="(itemX, count) in xValues">
+            <th>
+                <span class="partito-text">{{itemX}}</span>
+            </th>
+            <td ng-repeat="(itemY, count) in yValues">
                 <div class="face-container" ng-repeat="row in result2[itemX][itemY]" alt="{{row.title}}" set-nav-text="">
-                        <a ng-href="#atto?deputato={{row.refid}}">
-                            <circle-image class="circle-image" src="{{row.img}}" />
-                        </a>
+                    <a ng-href="#atto?deputato={{row.refid}}">
+                        <circle-image class="circle-image" src="{{row.img}}" />
+                    </a>
                 </div>
             </td>
         </tr>
