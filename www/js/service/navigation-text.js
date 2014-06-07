@@ -1,4 +1,4 @@
-(function () {
+!function () {
 
     var app = angular.module("c4iapp");
 
@@ -13,4 +13,4 @@
             priv_callback(message);
         };
     }]);
-})()
+}()
