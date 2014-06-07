@@ -194,7 +194,7 @@ WHERE {
 
 <script  id="select_bio" type="text/ng-template">
 SELECT DISTINCT
-    ?name ?description ?dataNascita ?luogoNascita ?img ?gender ?gruppo_label ?twitter ?facebook ?youtube
+    ?name ?description ?dataNascita ?luogoNascita ?collegio ?img ?gender ?gruppo_label ?twitter ?facebook ?youtube
 WHERE {
     <{{deputato}}> a ocd:deputato;
         foaf:depiction ?img;
@@ -205,7 +205,9 @@ WHERE {
     ?persona ocd:rif_mandatoCamera ?mandato;
         a foaf:Person;
         dc:title ?name;
-        foaf:gender ?gender
+        foaf:gender ?gender.
+    ?mandato ocd:rif_elezione ?elezione .
+    ?elezione dc:coverage ?collegio .
 
     OPTIONAL {
         <{{deputato}}> dc:description ?description
