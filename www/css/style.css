@@ -341,3 +341,17 @@ table.table-contact > tbody > tr > td > a {
     display: inline-block;
 
 }
+
+/* Badge votes */
+.voti-total {
+    color: white;
+    background-color: #000000;
+}
+.voti-favore {
+  color: #fff;
+  background-color: #1abc9c;
+}
+.voti-contrari {
+  color: #fff;
+  background-color: #e74c3c;
+}

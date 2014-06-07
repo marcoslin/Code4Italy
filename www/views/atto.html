@@ -5,11 +5,28 @@
         <!-- Column 1 -->
         <div class="col-md-4">
             <div class="bio-container">
-                <img src="{{deputato_full.img.value}}" alt="{{deputato_full.name.value}}">
+                <img ng-src="{{deputato_full.img.value}}" alt="{{deputato_full.name.value}}">
                 <h4>{{deputato_full.name.value}}</h4>
                 <h5>{{deputato_full.description.value}}</h5>
+                	
 
                 <table class="table table-hover table-condensed">
+                    <tr>
+                        <th>Voti:</th>
+                        <td>
+                            <ul class="list-inline">
+                                <li tooltip="Voti Totali">
+                                    <span class="badge voti-total">T</span> {{voti.total}}
+                                </li>
+                                <li tooltip="Voti a Favore">
+                                    <span class="badge voti-favore">F</span> {{voti.favore}}
+                                </li>
+                                <li tooltip="Voti Contrari">
+                                    <span class="badge voti-contrari">C</span> {{voti.contrari}}
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
                     <tr>
                         <th>Data di nascita:</th>
                         <td>{{deputato_full.dataNascita.value | birthDate}}</td>
@@ -236,4 +253,18 @@ WHERE {
         ?membro ocd:endDate ?fineMembership
     }
 }
+</script>
+
+<script id="select_votazione" type="text/ng-template">
+SELECT
+    ?type count(distinct ?votazione) as ?count
+WHERE {
+    ?voto a ocd:voto;
+    ocd:rif_votazione ?votazione;
+    dc:type ?type;
+    ocd:rif_deputato <{{deputato}}> .
+    ?votazione ocd:rif_leg <{{legislatura_uri}}>
+}
+GROUP BY
+    ?type
 </script>

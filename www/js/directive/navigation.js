@@ -1,7 +1,7 @@
-(function () {
+!function () {
     var app = angular.module("c4iapp");
 
-    app.directive('navMenu', ["navTextUpdater", "$route", "$location", "$window", "$log", function (navTextUpdater, $route, $location, $window, $log) {
+    app.directive('navMenu', ["navTextUpdater", "BrowserCheck", "$route", "$location", "$window", "$log", function (navTextUpdater, BrowserCheck, $route, $location, $window, $log) {
         return {
             restrict: 'EA',
             templateUrl: 'js/directive/template/navMenu.html',
@@ -37,6 +37,9 @@
                     };
                 }
 
+                // Check if browser is compatible
+                $scope.isBrowserCompatible = BrowserCheck.isBrowserCompatible();
+
                 // $log.log("Sending to GA: " + ga_path);
                 $window._gaq.push(['_trackPageview', ga_path]);
 
@@ -54,4 +57,4 @@
         };
     }]);
 
-})();
+}();
