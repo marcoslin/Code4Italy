@@ -3,15 +3,25 @@
 <div class="jumbotron">
     <div class="row">
         <div class="col-md-8">
-            <div>
+            <div class="map-container">
                 <img class="mapper" src="img/mappa_italia.png" border="0" usemap="#mappa_italia" alt="Mappa Italia"/>
                 <a class="cite" href="http://it.wikipedia.org/wiki/File:Circ_elett.png">
                     <span>Fonte: Wikipedia Licenza CC 3.0</span>
                 </a>
             </div>
+            <div class="row table-container homelist-container">
+                <table class="table table-hover">
+                    <caption>Circoscrizioni</caption>
+                    <tr ng-repeat="collegio in collegio">
+                        <td>
+                            <a href="" class="collegio-text" ng-click="goToCollegio(collegio.id)">{{collegio.desc}}</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
         <div class="col-md-4 ">
-            <div class="row message-container">
+            <div class="row">
                 <form ng-submit="deputatoSearch()">
                     <div class="input-group">
                         <input type="text"
@@ -28,7 +38,7 @@
                 </form>
             </div>
 
-            <div class="row message-container">
+            <div class="row table-container">
                 <div class="help-container">
                     <a href="./help.pdf" target="_blank">
                         <i class="fa fa-question-circle fa-3x"></i>
@@ -47,9 +57,9 @@
             <div class="row table-container">
                 <table class="table table-hover">
                     <caption>Circoscrizioni Estere</caption>
-                    <tr ng-repeat="(key, region) in otherRegions">
+                    <tr ng-repeat="collegio in collegioOther">
                         <td>
-                            <a href="" ng-click="goToCollegio(key)">{{region}}</a>
+                            <a href="" class="collegio-text" ng-click="goToCollegio(collegio.id)">{{collegio.desc}}</a>
                         </td>
                     </tr>
                 </table>
@@ -81,7 +91,7 @@
     <area shape="poly" ng-click="goToCollegio('LOMBARDIA 3')" alt="Lombardia 3" set-nav-text
           coords="77,100,75,104,78,111,81,116,84,118,90,117,92,122,98,132,102,133,106,135,108,130,109,128,106,124,109,115,118,111,121,114,130,113,132,111,140,117,143,117,150,119,155,122,162,119,170,122,176,120,188,120,178,115,176,112,171,109,167,105,162,102,159,100,155,98,150,103,148,108,141,106,129,101,129,97,124,96,120,95,115,94,111,96,108,102,100,104,94,104,87,99,84,99,84,104,80,101,77,100"/>
 
-    <area shape="poly" ng-click="goToCollegio('VALLE D\'AOSTA')" alt="Valle D'Aosta" set-nav-text
+    <area shape="poly" ng-click="goToCollegio('VALLE D\'AOSTA')" alt="Valle d'Aosta" set-nav-text
           coords="52,84,49,86,45,88,42,86,39,86,34,86,31,89,28,91,22,91,19,92,16,91,15,86,16,83,10,80,9,77,9,72,15,70,18,67,22,70,26,70,32,68,40,64,46,67,50,67,52,74,52,78,52,84"/>
 
     <area shape="poly" ng-click="goToCollegio('PIEMONTE 1')" alt="Piemonte 1" set-nav-text

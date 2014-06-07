@@ -68,7 +68,9 @@
             $location.path("atto").search("deputato", $scope.selected_deputato.id);
         }
 
-
+        // Expose data to view
+        $scope.collegio = CameraData.collegio;
+        $scope.collegioOther = CameraData.collegioOther;
 
         // Initialize mapper.js
         $('.mapper').maphilight().parent().addClass("center-map");
