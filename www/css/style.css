@@ -343,19 +343,15 @@ table.table-contact > tbody > tr > td > a {
 }
 
 /* Badge votes */
-.badge.F{
+.voti-total {
+    color: white;
+    background-color: #000000;
+}
+.voti-favore {
   color: #fff;
   background-color: #1abc9c;
 }
-.badge.C{
+.voti-contrari {
   color: #fff;
   background-color: #e74c3c;
-}
-.badge.A{
-  color: #222;
-  background-color: #ecf0f1;
-}
-.badge.NP{
-  color: #fff;
-  background-color: #34495e;
 }
