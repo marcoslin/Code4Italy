@@ -17,6 +17,55 @@ body {
     text-align: center;
 }
 
+
+/* PRIMARY TABLE CONTAINER DEFINITION */
+.table-container {
+    padding-top: 10px;
+    margin: 5px -10px 10px -10px;
+    border-radius: 10px;
+    background-color: rgba(202, 224, 221, 0.3);
+    border: 1px dotted #A19793;
+    padding: 5px;
+}
+
+.table-container > h4 {
+    margin-bottom: 0px;
+}
+
+.table-container > h5 {
+    color: #7D7572;
+    font-weight: normal;
+    margin-top: 0px;
+}
+
+.table-container > img {
+    border-radius: 10px;
+}
+
+
+/* Set the text of the link */
+.table-container > .table > tbody > tr > td > a {
+    color: #293B6B;
+    font-size: 12px;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Set the table title */
+.table-container > .table > caption {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Override bootstrap */
+.table-container > .table,
+.table-container > .table > tbody > tr > td {
+    text-align: left;
+    padding: 0;
+}
+
+
 /*
  * NAVIGATION
  */
@@ -96,15 +145,11 @@ body {
     }
 }
 
-@media(max-width:640px) {
+@media(max-width:580px) {
     .logo-text {
         visibility:hidden;
         width: 0;
         height: 0;
-    }
-    .logo-image {
-        width: 60px;
-        height: 60px;
     }
     .nav-container {
         padding-top: 3px;
@@ -121,11 +166,34 @@ body {
 /*
  * HOME
  */
-.message-container {
-    margin: 5px -10px 10px -10px;
-    border-radius: 10px;
-    background-color: rgba(202, 224, 221, 0.3);
-    border: 1px dotted #A19793;
+
+/*
+ * Text of link should increase making it easier to click
+ * on smaller devices
+ */
+@media(max-width:580px) {
+    .collegio-text {
+        font-size: 16px !important;
+    }
+}
+
+
+.map-container {
+    display: block !important;
+}
+
+.homelist-container {
+    display: none !important;
+}
+
+@media(max-width:580px) {
+    .map-container {
+        display: none !important;
+    }
+
+    .homelist-container {
+        display: block !important;
+    }
 }
 
 .center-map {
@@ -244,16 +312,14 @@ table.table-contact > tbody > tr > td > a {
 }
 
 .circle-image {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
 }
 
 .partito-text {
     font-size: 20px;
     white-space: nowrap;
 }
-
-
 
 @media (max-width:992px){
     .circle-image {
@@ -262,7 +328,7 @@ table.table-contact > tbody > tr > td > a {
     }
 }
 
-@media(max-width:640px) {
+@media(max-width:767px) {
     .circle-image {
         width: 50px;
         height: 50px;
@@ -273,8 +339,8 @@ table.table-contact > tbody > tr > td > a {
 }
 @media(max-width:580px) {
     .circle-image {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
     }
     .partito-text {
         font-size: 14px;
@@ -283,67 +349,20 @@ table.table-contact > tbody > tr > td > a {
 /*
  * ATTO
  */
-.bio-container,
-.table-container {
-    padding-top: 10px;
-    margin: 5px -10px 10px -10px;
-    border-radius: 10px;
-    background-color: rgba(202, 224, 221, 0.3);
-    border: 1px dotted #A19793;
-}
-
-.bio-container > h4 {
-    margin-bottom: 0px;
-}
-
-.bio-container > h5 {
-    color: #7D7572;
-    font-weight: normal;
-    margin-top: 0px;
-}
-
-.bio-container > img {
-    border-radius: 10px;
-}
 
 .table-fixed-size {
+    overflow: hidden;
     height: 320px;
 }
 
-.table-container {
-    overflow: hidden;
-    padding: 10px;
-}
-
-.table-container:hover {
+.table-fixed-size:hover {
     overflow: auto;
 }
+
 
 .commissione-text {
     font-size: 10px;
     text-align: left;
-}
-
-/* Set the text of the link */
-.table-container > .table > tbody > tr > td > a {
-    color: #293B6B;
-    font-size: 12px;
-    width: 100%;
-    overflow: hidden;
-}
-
-/* Set the table title */
-.table-container > .table > caption {
-    font-family: Arial;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-/* Override bootstrap */
-.table-container > .table,
-.table-container > .table > tbody > tr > td {
-    text-align: left;
-    padding: 0;
 }
 
 .social-container {
