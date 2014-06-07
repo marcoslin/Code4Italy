@@ -268,3 +268,21 @@ table.table-contact > tbody > tr > td > a {
     display: inline-block;
 
 }
+
+/* Badge votes */
+.badge.F{
+  color: #fff;
+  background-color: #1abc9c;
+}
+.badge.C{
+  color: #fff;
+  background-color: #e74c3c;
+}
+.badge.A{
+  color: #222;
+  background-color: #ecf0f1;
+}
+.badge.NP{
+  color: #fff;
+  background-color: #34495e;
+}

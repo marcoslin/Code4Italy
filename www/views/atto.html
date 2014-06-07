@@ -8,8 +8,16 @@
                 <img src="{{deputato_full.img.value}}" alt="{{deputato_full.name.value}}">
                 <h4>{{deputato_full.name.value}}</h4>
                 <h5>{{deputato_full.description.value}}</h5>
+                	
 
                 <table class="table table-hover table-condensed">
+                    <tr>
+                        <th>Voti:</th>
+                        <td>
+	                        <span class="badge F" alt="Voti a favore">F</span> {{voti_a_favore}}
+	                        <span class="badge C" alt="Voti contrari">C</span> {{voti_contrari}}
+                        </td>
+                    </tr>
                     <tr>
                         <th>Data di nascita:</th>
                         <td>{{deputato_full.dataNascita.value | birthDate}}</td>
@@ -236,4 +244,14 @@ WHERE {
         ?membro ocd:endDate ?fineMembership
     }
 }
+</script>
+
+<script id="select_votazione" type="text/ng-template">
+select distinct * where {
+?voto ocd:rif_votazione ?votazione. 
+?voto a ocd:voto.
+?votazione ocd:rif_leg <{{legislatura_uri}}>.
+?voto dc:type ?type;
+ocd:rif_deputato <{{deputato}}>
+}  
 </script>

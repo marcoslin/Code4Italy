@@ -59,7 +59,28 @@
             $scope.deputato_commissione = res_comm;
         });
 
-        
+        // Get Votazioni
+        SPARQL.getData("select_votazione", params).then(function (data) {
+            var votes = data.data.results.bindings;
+            //$scope.votazioni = votes;
+            //$log.log("votazioni: ", $scope.votazioni);
+            
+            var F = 0;
+            var C = 0;
+            
+            for (var i = 0; i < votes.length; i++) {
+            	if(votes[i].type.value == "Favorevole"){
+	            	F++;
+            	}
+            	if(votes[i].type.value == "Contrario"){
+	            	C++;
+            	}
+            }
+           $scope.voti_a_favore = F;
+           $scope.voti_contrari = C;
+           //$log.log("favore: ", $scope.voti_a_favore);
+           //$log.log("contrari: ", $scope.voti_contrari);
+        });
         
     }]);
 })();
