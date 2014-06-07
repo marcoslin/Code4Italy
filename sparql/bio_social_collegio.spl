@@ -1,0 +1,50 @@
+##bio/partito/social, include "collegio"
+SELECT DISTINCT
+    ?name ?description ?dataNascita ?luogoNascita ?collegio ?img ?gender ?gruppo_label ?twitter ?facebook ?youtube
+WHERE {
+    ?deputato a ocd:deputato;
+        foaf:depiction ?img;
+        ocd:rif_leg <http://dati.camera.it/ocd/legislatura.rdf/repubblica_17>;
+        ocd:rif_mandatoCamera ?mandato;
+        ocd:aderisce ?aderisce .
+
+    ?persona ocd:rif_mandatoCamera ?mandato;
+        a foaf:Person;
+        dc:title ?name;
+        foaf:gender ?gender.
+    ?mandato ocd:rif_elezione ?elezione .
+    ?elezione dc:coverage ?collegio .
+
+    OPTIONAL {
+        ?deputato dc:description ?description
+    }
+
+    OPTIONAL{
+        ?persona bio:Birth ?nascita .
+        ?nascita bio:date ?dataNascita; ocd:rif_luogo ?luogoNascitaUri .
+        ?luogoNascitaUri dc:title ?luogoNascita
+    }
+    OPTIONAL{
+        ?persona foaf:account ?accountTw .
+        ?accountTw foaf:accountServiceHomepage ?twitter .
+        FILTER(REGEX(STR(?twitter),'twitter.com'))
+    }
+    OPTIONAL{
+        ?persona foaf:account ?accountFb .
+        ?accountFb foaf:accountServiceHomepage ?facebook .
+        FILTER(REGEX(STR(?facebook),'facebook.com'))
+    }
+
+    OPTIONAL{
+        ?persona foaf:account ?accountYt .
+        ?accountYt foaf:accountServiceHomepage ?youtube .
+        FILTER(REGEX(STR(?youtube),'youtube.com'))
+    }
+
+    ?aderisce ocd:rif_gruppoParlamentare ?gruppo .
+    ?gruppo <http://purl.org/dc/terms/alternative> ?gruppo_label .
+
+    MINUS{
+        ?aderisce ocd:endDate ?fineAdesione
+    }
+}
