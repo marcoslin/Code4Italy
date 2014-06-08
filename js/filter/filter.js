@@ -68,17 +68,15 @@
             tw_regex = /\/(\w+)$/;
 
         return function(input) {
-            if (typeof input === "undefined") {
-                return undefined;
-            } else {
+            var result = input;
+            // $log.log("TWITTERINTENT input: ", input);
+            if (typeof input !== "undefined") {
                 var m = tw_regex.exec(input);
-
-                if (m[1]) {
-                    return url + m[1];
-                } else {
-                    return undefined;
+                if (m && m[1]) {
+                    result = url + m[1];;
                 }
             }
+            return result;
         };
     }]);
 

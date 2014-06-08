@@ -350,9 +350,24 @@ table.table-contact > tbody > tr > td > a {
  * ATTO
  */
 
+
+/*
+ * table-fixed-size is used to suppress the scrollbar and only show it on mouse over.
+ * However, this mouseover scrollbar deactivate the scrolling in a touch device so
+ * table-fixed-size-touch is created to have scrollbar always active for mobile
+ * devices.
+*/
+.table-fixed-size-touch,
+.table-fixed-size {
+    height: 320px;
+}
+
+.table-fixed-size-touch {
+    overflow: auto;
+}
+
 .table-fixed-size {
     overflow: hidden;
-    height: 320px;
 }
 
 .table-fixed-size:hover {

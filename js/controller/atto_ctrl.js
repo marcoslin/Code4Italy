@@ -7,10 +7,20 @@
                 legislatura_uri: CameraData.legislatura_uri,
                 deputato: deputato
             },
-            deputato_param = "<" + deputato + ">"
-        ;
+            deputato_param = "<" + deputato + ">";
 
         $scope.deputato = deputato;
+
+        /*
+         * Define CSS based on presence of touch event as `overflow: hidden`
+         * should not be used on a mobile device.
+         */
+        if (Modernizr.touch) {
+            $scope.tableFixedSize = "table-fixed-size-touch";
+        } else {
+            $scope.tableFixedSize = "table-fixed-size";
+        }
+        $log.log("fs: ", $scope.tableFixedSize);
 
         // Get atto related to a deputato
         SPARQL.getData("select_atto", params).then(function (data) {
