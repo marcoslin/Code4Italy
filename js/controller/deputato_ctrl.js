@@ -9,6 +9,8 @@
                 collegio: collegio
             };
 
+        SPARQL.initialize($scope);
+
         SPARQL.getData("select_deputato", params).then(function (data) {
             var in_data = data.data.results.bindings,
                 res_deputato = [],

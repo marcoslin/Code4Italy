@@ -22,6 +22,55 @@
         }
         $log.log("fs: ", $scope.tableFixedSize);
 
+        // Initialize SPARQL Queue
+        SPARQL.initialize($scope);
+
+        // Get deputato
+        SPARQL.getData("select_bio", params).then(function (data) {
+            var deputato = data.data.results.bindings;
+            if (deputato.length > 0) {
+                $scope.deputato_full = data.data.results.bindings[0];
+                // $log.log("Deputato full: ", $scope.deputato_full);
+            }
+        });
+
+        // Get Votazioni
+        SPARQL.getData("select_votazione", params).then(function (data) {
+            //$log.log("select_votazione data: ", votes);
+            var votes = data.data.results.bindings,
+                total_count = 0,
+                result = {};
+
+            for (var i = 0; i < votes.length; i += 1) {
+                var vote = votes[i],
+                    vote_type = vote.type.value,
+                    vote_count = parseInt(vote.count.value);
+
+                // Count only act of voting, excluding missing or not voted
+                if (vote_type!=="Astensione" && vote_type!=="Non ha votato") {
+                    total_count += vote_count;
+                }
+
+                // Add different vote type to result
+                if (vote_type === "Favorevole") {
+                    result.favore = vote_count;
+                } else if (vote_type == "Contrario") {
+                    result.contrari = vote_count;
+                } else if (vote_type == "Astensione") {
+                    result.astensione = vote_count;
+                } else if (vote_type == "Ha votato") {
+                    result.votato = vote_count;
+                } else if (vote_type == "Non ha votato") {
+                    result.non_votato = vote_count;
+                }
+
+            }
+            result.total = total_count;
+
+            $scope.voti = result;
+
+        });
+
         // Get atto related to a deputato
         SPARQL.getData("select_atto", params).then(function (data) {
             $scope.atto_result = data.data.results.bindings;
@@ -49,16 +98,6 @@
              //$log.log("Leggi: ", $scope.leggi_result);
         });
 
-        // Get deputato
-        SPARQL.getData("select_bio", params).then(function (data) {
-            var deputato = data.data.results.bindings;
-            if (deputato.length > 0) {
-                $scope.deputato_full = data.data.results.bindings[0];
-                // $log.log("Deputato full: ", $scope.deputato_full);
-            }
-
-        });
-
         // Get Commissione
         SPARQL.getData("select_commissione", params).then(function (data) {
             var comm = data.data.results.bindings,
@@ -69,42 +108,7 @@
             $scope.deputato_commissione = res_comm;
         });
 
-        // Get Votazioni
-        SPARQL.getData("select_votazione", params).then(function (data) {
-            //$log.log("select_votazione data: ", votes);
-            var votes = data.data.results.bindings,
-                total_count = 0,
-                result = {};
 
-            for (var i = 0; i < votes.length; i += 1) {
-                var vote = votes[i],
-                    vote_type = vote.type.value,
-                    vote_count = parseInt(vote.count.value);
-
-                // Count only act of voting, excluding missing or not voted
-                if (vote_type!=="Astensione" && vote_type!=="Non ha votato") {
-                    total_count += vote_count;
-                }
-
-                // Add different vote type to result
-            	if (vote_type === "Favorevole") {
-                    result.favore = vote_count;
-            	} else if (vote_type == "Contrario") {
-                    result.contrari = vote_count;
-            	} else if (vote_type == "Astensione") {
-                    result.astensione = vote_count;
-                } else if (vote_type == "Ha votato") {
-                    result.votato = vote_count;
-                } else if (vote_type == "Non ha votato") {
-                    result.non_votato = vote_count;
-                }
-
-            }
-            result.total = total_count;
-
-            $scope.voti = result;
-
-        });
         
     }]);
 })();

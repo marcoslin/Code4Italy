@@ -1,6 +1,6 @@
 (function () {
 
-    var app = angular.module("c4iapp", ['ngRoute','ui.bootstrap']);
+    var app = angular.module("c4iapp", ['ngRoute','ui.bootstrap', 'ngWorkerQueue']);
 
     // Define application wide basic constants
     app.constant("CameraData", {
@@ -43,7 +43,7 @@
     });
 
     // Define application route
-    app.config(['$routeProvider', '$sceProvider', function ($routeProvider, $sceProvider) {
+    app.config(['$routeProvider', '$sceProvider', 'WorkerQueueProvider', function ($routeProvider, $sceProvider, WorkerQueueProvider) {
         $sceProvider.enabled(false)
 
         $routeProvider
@@ -56,6 +56,10 @@
             .when('/sparql', { templateUrl: "views/sparql.html", controller: "HomeController"} )
             .otherwise({redirectTo: '/home'})
         ;
+
+        WorkerQueueProvider.config({
+            workers: 2
+        });
     }]);
 
 })();
