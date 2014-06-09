@@ -3,6 +3,9 @@
     var app = angular.module("c4iapp");
 
     app.controller("HomeController", ["$scope", "SPARQL", "CameraData", "$location", "$log", function ($scope, SPARQL, CameraData, $location, $log) {
+        // Initialize SPARQL Queue
+        SPARQL.initialize($scope);
+
         /*
          * Skipping the select_collegio call for now as we are not displaying the count
          *

@@ -2,13 +2,18 @@
 
     var app = angular.module("c4iapp");
 
-    app.service("SPARQL", ["$http", "$templateCache", "$log", function ($http, $templateCache, $log) {
+    app.service("SPARQL", ["$http", "$templateCache", "$q", "$timeout", "WorkerQueue", "$log", function ($http, $templateCache, $q, $timeout, WorkerQueue, $log) {
 
         var self = this,
             // Define the TARGET URL
             URL_PRE = "http://dati.camera.it/sparql?default-graph-uri=&query=",
             URL_POS = "&format=application%2Fjson&timeout=0&debug=on&callback=JSON_CALLBACK";
 
+
+        // Initialize WorkerQueue
+        this.initialize = function (scope) {
+            WorkerQueue.initialize(scope);
+        };
 
         /**
          * render: Render the text containing mustache parameters.  If key mot provided in
@@ -66,11 +71,42 @@
          * @returns {json}
          */
         this.getData = function (spl_id, params) {
-            var sql = self.generate(spl_id, params);
-            $log.log(spl_id + ": ", sql);
-            return $http.jsonp(URL_PRE + sql + URL_POS);
-        };
+            var sql = self.generate(spl_id, params),
+                retry_max = 3,
+                retry_count = 0;
 
+            $log.log(spl_id + ": ", sql);
+
+            function getSparqlWithRetry(sparl_sql) {
+                var d = $q.defer();
+
+                function executeGet() {
+                    $http.jsonp(sparl_sql).then(function (data) {
+                        d.resolve(data);
+                    }).catch(function (error) {
+                        /*
+                        As there is no way to get HTTP Status code back from serer when
+                        using jsonp, blindly perform retries
+                        https://github.com/angular/angular.js/issues/1423
+                         */
+                        if (retry_count < retry_max) {
+                            retry_count += 1;
+                            $log.error("http.jsonp error retry: ", error );
+                            $timeout(executeGet, 500);
+                        } else {
+                            $log.error("http.jsonp error max retry reached: ", error );
+                            d.reject(error);
+                        }
+                    });
+                }
+
+                executeGet();
+
+                return d.promise;
+            }
+
+            return WorkerQueue.add(getSparqlWithRetry, URL_PRE + sql + URL_POS);
+        };
     }]);
 
 
