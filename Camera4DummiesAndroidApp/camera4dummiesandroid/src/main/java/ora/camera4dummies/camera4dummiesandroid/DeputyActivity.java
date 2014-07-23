@@ -97,6 +97,11 @@ public class DeputyActivity extends ActionBarActivity {
                 Log.i(TAG, "onPanelAnchored");
 
             }
+
+            @Override
+            public void onPanelHidden(View view) {
+
+            }
         });
 
         pd = (ProgressBar) findViewById(R.id.progressBar);
